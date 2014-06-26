@@ -1,1 +1,79 @@
-$(document).ready(function(){"use strict";!function(a){a(document).on("click",".js-thumblist a",function(b){b.preventDefault();var c=a(this),d=c.closest(".js-thumblist").data("target"),e=a(d),f=c.attr("href");e.attr("src",f)})}(jQuery),$(document).on("click",".js-addtocart",function(a){a.preventDefault(),$(this).sendRequest("shop:onAddToCart",{update:{"#mini-cart":"shop-minicart","#product-page":"shop-product","#modal-minicart":"modal-minicart"},onAfterUpdate:function(){$("#modal-minicart").modal({backdrop:!1,show:!0})}})}),function(a){function b(){e.each(function(){c.apply(this)})}function c(){if(a(this).attr("name")){var b=a(this),c=b.val(),d=b.attr("name").match(h);if(d){d=d[1];var e=new RegExp(d,"g"),f=g.filter(function(){return this.name.match(e)});f.val(c),"billing_country"===b[0].id&&f.trigger("change")}}}var d=a("#billing-info"),e=d.find(":input:not([type=hidden])"),f=a("#shipping-info"),g=f.find(":input:not([type=hidden])"),h=/\[(.*?)\]/,i="keyup keypress blur change";a(document).on("click.address update:address",".js-mirrordata",function(){a(this).is(":checked")?(b(),e.on(i,c)):e.off(i,c)}),a(".js-mirrordata").trigger("update:address")}(jQuery),$(document).on("change","#payment_method input",function(){$("#payment_form").html('<i class="fa fa-refresh fa-spin"/>'),$(this).sendRequest("shop:onUpdatePaymentMethod",{update:{"#payment_form":"shop-paymentform"}})})});
+$(document).ready(function() {
+    "use strict";
+    (function($) {
+        $(document).on("click", ".js-thumblist a", function(e) {
+            e.preventDefault();
+            var $el = $(this);
+            var target = $el.closest(".js-thumblist").data("target");
+            var $target = $(target);
+            var src = $el.attr("href");
+            $target.attr("src", src);
+        });
+    })(jQuery);
+    $(document).on("click", ".js-addtocart", function(e) {
+        e.preventDefault();
+        $(this).sendRequest("shop:onAddToCart", {
+            update: {
+                "#mini-cart": "shop-minicart",
+                "#product-page": "shop-product",
+                "#modal-minicart": "modal-minicart"
+            },
+            onAfterUpdate: function() {
+                $("#modal-minicart").modal({
+                    backdrop: false,
+                    show: true
+                });
+            }
+        });
+    });
+    (function($) {
+        var $source = $("#billing-info");
+        var $sourceInput = $source.find(":input:not([type=hidden])");
+        var $target = $("#shipping-info");
+        var $targetInput = $target.find(":input:not([type=hidden])");
+        var _regex = /\[(.*?)\]/;
+        var _ev = "keyup keypress blur change";
+        $(document).on("click.address update:address", ".js-mirrordata", function() {
+            if ($(this).is(":checked")) {
+                mirrorAll();
+                $sourceInput.on(_ev, mirrorField);
+            } else {
+                $sourceInput.off(_ev, mirrorField);
+            }
+        });
+        $(".js-mirrordata").trigger("update:address");
+        function mirrorAll() {
+            $sourceInput.each(function() {
+                mirrorField.apply(this);
+            });
+        }
+        function mirrorField() {
+            if (!$(this).attr("name")) {
+                return;
+            }
+            var $el = $(this);
+            var mirrorVal = $el.val();
+            var nameMatch = $el.attr("name").match(_regex);
+            if (!nameMatch) {
+                return;
+            }
+            nameMatch = nameMatch[1];
+            var re = new RegExp(nameMatch, "g");
+            var $targetEl = $targetInput.filter(function() {
+                return this.name.match(re);
+            });
+            $targetEl.val(mirrorVal);
+            if ($el[0].id === "billing_country") {
+                $targetEl.trigger("change");
+            }
+        }
+    })(jQuery);
+    $(document).on("change", "#payment_method input", function() {
+        $("#payment_form").html('<i class="fa fa-refresh fa-spin"/>');
+        $(this).sendRequest("shop:onUpdatePaymentMethod", {
+            update: {
+                "#payment_form": "shop-paymentform"
+            }
+        });
+    });
+});
