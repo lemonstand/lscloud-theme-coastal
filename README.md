@@ -1,4 +1,4 @@
-coastal-theme
+Coastal
 =============
 
 A responsive theme for LemonStand.
