@@ -1,0 +1,44 @@
+{% if cart %}
+    <div class="row buffer-bottom">
+        <div class="col-sm-12" id="cart-content">
+            {{ partial('shop-cart-items') }}
+        </div>
+    </div>
+
+    <div class="row">
+        {% if order.payment_processed %}
+        <div class="col-sm-6">
+            <p class="flash info"><strong>Thank you!</strong> The payment is already processed for this order.</p>
+        </div>
+        {% else %}
+
+        <div class="col-sm-12">
+            <h4>Choose a payment method.</h4>
+
+            <!-- The payment method radio button clicks are handled in the main.js -->
+            {{ open_form({'class': 'custom', 'id': 'payment_method'}) }} 
+            {% for method in paymentMethods %}
+                {% for method in paymentMethods %}
+                <div class="radio">
+                    <label for="payment-method{{ method.id }}">
+                        <input class="custom-radio" name="paymentMethodId" value="{{ method.id }}" type="radio" id="payment-method{{ method.id }}" /> {{ method.name }}
+                    </label>
+                </div>
+                {% endfor %}
+            {% endfor %}
+            </form>
+
+            <div id="payment_form">{{ partial('shop-paymentform') }}</div>
+
+        </div>
+    
+        {% endif %}
+    </div>
+
+ {% else %}
+    <div class="row buffer-bottom">
+        <div class="col-sm-12">
+            <p class="flash error">Order not found.</p>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,11 @@
+<div class="col-sm-2 hidden-xs">
+
+    <h5 class="text-caps text-muted mb1">{{ customer.first_name }} {{ customer.last_name }}</h5>
+    
+    <ul class="sidenav">
+        <li><a href="{{ site_url('orders') }}"{{ active_page == 'orders' ? ' class="current"' : null }}>Order History</a></li>
+        <li><a href="{{ site_url('profile') }}"{{ active_page == 'profile' ? ' class="current"' : null }}>Addresses</a></li>
+        <li><a href="{{ site_url('password') }}"{{ active_page == 'password' ? ' class="current"' : null }}>Password</a></li>
+    </ul>
+
+</div>

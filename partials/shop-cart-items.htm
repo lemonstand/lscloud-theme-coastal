@@ -1,0 +1,57 @@
+<table class="table table-mobile cart-table CART__table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Product</th>
+            <th class="narrow">Quantity</th>
+            <th class="narrow">Price</th>
+            {% if cart.getDiscountTotal() > 0 %}
+            <th class="narrow">Discount</th>
+            <th class="narrow">Unit Price</th>
+            {% endif %}
+            <th class="narrow">Total</th>
+            <th class="narrow"></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+    <tr>
+        <td class="td-col-4">
+            <a href="/product/{{ item.product.url_name }}">
+                <img src="{{ item.product.images.first.thumbnail(80, 80)|default('http://placehold.it/80x80') }}"/>
+            </a>
+        </td>
+        <td class="td-col-4">
+            <h6><a href="/product/{{ item.product.url_name }}">{{ item.product.name }}</a></h6>
+            {% set description = item.optionsString() %}
+            {% if description %}
+            <span class="text-muted small">{{ description|unescape }}</span>
+            {% endif %}          
+        </td>        
+        {%if edit_cart %}
+        <td class="narrow td-col-4">
+            <input type="text" name="item_quantity[{{ item.key }}]" class="form-control input-sm quantity" value="{{ item.quantity }}" size="1" />
+        </td>
+        {% else %}
+        <td class="narrow td-col-4">{{ item.quantity }}</td>
+        {% endif %}
+        <td class="narrow td-col-4" data-heading="Price"><i>{{ item.fullPrice()|currency }}</i></td> 
+        {% if cart.getDiscountTotal() > 0 %}
+          <td class="narrow td-col-4" data-heading="Discount"><i class="newprice">{{ item.totalDiscount()|currency }}</i></td>
+          <td class="narrow td-col-4" data-heading="Unit Price"><i>{{ item.price()|currency }}</i></td>
+        {% endif %}
+        <td class="narrow td-col-6" data-heading="Total"><i>{{ item.total()|currency }}</i></td>
+        <td class="narrow remove td-col-6">
+          {%if edit_cart %}
+          <a href="#" class="close"
+            data-ajax-handler="shop:cart" 
+            {# data-ajax-confirm="Do you really want to remove this item from the cart?" #}
+            data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
+            data-ajax-extra-fields="delete_item='{{ item.key }}'"
+          >&times;</a>
+          {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+---
+action: 'shop:orders'
+template: inner
+protocol: all
+published: true
+name: Orders
+url: /orders
+---
+
+<div class="container buffer-bottom">
+    <div class="row">
+
+        {{ partial('account-sidenav') }}        
+
+        <div class="col-xs-12 col-sm-10">
+
+            {% if not orders or not orders.count %}
+            <div class="col-sm-6">
+                <p>You haven't placed any orders yet.</p>
+            </div>            
+            {% else %}
+            <div class="col-sm-12">
+                <table class="table table-orders full-width">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                    {% set url = root_url('/order/'~order.id) %}
+                        <tr>
+                            <td><a href="{{ url }}">{{ order.id }}</a></a></td>
+                            <td><a href="{{ url }}">{{ order.created_at.format('M jS, Y') }}</a></td>
+                            <td><a href="{{ url }}">{{ order.orderStatus.name }}</a></td>
+                            <td><a href="{{ url }}"><i>{{ order.total|currency }}</i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

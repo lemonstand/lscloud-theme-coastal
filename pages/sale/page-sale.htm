@@ -1,0 +1,32 @@
+---
+action: 'shop:sale'
+template: shop
+protocol: all
+published: true
+name: Sale
+url: '/sale/:page?'
+---
+
+<div class="container buffer-bottom CATEGORY">
+
+    <div class="row">
+        <div class="col-sm-2 hidden-xs">
+            {{ partial('shop-categories') }}            
+        </div>
+
+        <div class="col-xs-12 col-sm-10">
+        {% if product.onSale %}
+            <h2>Nothing on sale.</h2>
+            <p>We are sorry, there are no items on sale.</p>
+        {% else %}
+            {{ 
+                partial('shop-product-list', {
+                    'products': products,
+                    'empty_text': 'There are no products on sale.'
+                }) 
+            }}
+        {% endif %}
+        </div>
+    </div>
+    
+</div>

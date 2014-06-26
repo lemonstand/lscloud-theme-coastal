@@ -1,0 +1,74 @@
+{% set on_sale = product.onSale %}
+
+<div class="col-xs-12 col-sm-6 item-images">
+    <figure class="thumb thumb--lg big-image">
+        <img src="{{ product.images.first.thumbnail(746, 'auto')|default('http://placehold.it/460x300') }}" alt="{{ product.name }}" id="product-image" />
+    </figure>
+
+    <h5>Additional Views</h5>
+    {% if product.images.count > 1 %}
+    <ul class="thumblist js-thumblist" data-target="#product-image">
+        {% for image in product.images %}
+        <li>
+            <a href="{{ image.thumbnail(746, 'auto') }}">
+                <img src="{{ image.thumbnail(367, 367) }}" />
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
+
+    <div class="short-description">
+        <h1 class="PRD__name">{{ product.name }}</h1>
+        <p class="h3 PRD__price">
+            {% if on_sale %}
+            <span class="price oldprice">was {{ product.fullPrice|currency }}</span>
+            <span class="price curprice">now {{ product.price|currency }}</span>
+            {% else %}
+            <span class="price">{{ product.price|currency }}</span>
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="PRD__options">
+
+        {{ partial('shop-product-attributes') }}
+        {{ partial('shop-product-options') }}
+    
+{% if product.enabled %}
+    {% if not product.isOutOfStock() %}
+        {{ flash() }}
+        <div class="form-group">
+            <label class="title" for="customDropdown">Quantity</label>
+            <input type="text" size="1" value="{{ quantity|default("1") }}" name="quantity" class="form-control input-sm" />
+        </div>
+
+        <div class="form-group add-to-cart-block">
+            <input type="hidden" name="productId" value="{{ product.id }}" />
+            <a class="btn btn-dark js-addtocart" href="#">Add to Cart</a>
+        </div>
+
+    {% else %}
+        <div class="not-available">
+            <p>This product is temporarily unavailable.</p>
+        </div>
+    {% endif %}
+{% else %}
+        <div class="not-available">
+            <p>This product is not available.</p>
+        </div>
+{% endif %}
+    </div>
+
+    {% if product.description %}
+    <div class="row PRD__description">
+        <div class="col-sm-12">
+            <h5>Description</h5>
+            {{ product.description|unescape }}
+        </div>
+    </div>
+     {% endif %}
+</div>

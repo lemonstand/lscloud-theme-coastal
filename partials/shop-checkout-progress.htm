@@ -1,0 +1,45 @@
+{{ open_form({'class': 'custom'}) }}
+  {% if step == 'billing_info' %}
+    <div class="left">
+      <ul class="mybreadcrumbs">
+        <li class="active"><a href="#">Billing and Shipping</a></li>
+        <li class="active"><a href="#">Shipping Method</a></li>
+        <li class="active"><a href="#">Review and Pay</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <h2 class="left">Checkout Step 1 of 3 </h2>
+  {% elseif step == 'pay' %}
+    <div class="left">
+      <ul class="mybreadcrumbs">
+        <li><a href="#" 
+          data-ajax-handler="shop:checkout" 
+          data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart"
+          data-ajax-extra-fields="nextStep=billing_info"
+        >Billing and Shipping</a></li>
+        <li><a href="#" 
+          data-ajax-handler="shop:checkout" 
+          data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart"
+          data-ajax-extra-fields="nextStep=shipping_method"
+        >Shipping Method</a></li>
+        <li class="active"><a href="#">Review and Pay</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <h2 class="left">Checkout Step 3 of 3 </h2>
+  {% else %}
+    <div class="left">
+      <ul class="mybreadcrumbs">
+        <li><a href="#" 
+          data-ajax-handler="shop:checkout" 
+          data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart"
+          data-ajax-extra-fields="nextStep=billing_info"
+        >Billing and Shipping</a></li>
+        <li class="active"><a href="#">Shipping Method</a></li>
+        <li class="active"><a href="#">Review and Pay</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <h2 class="left">Checkout Step 2 of 3 </h2>
+  {% endif %}
+{{ close_form }}

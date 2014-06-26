@@ -1,0 +1,34 @@
+---
+action: 'shop:product'
+template: shop
+protocol: all
+published: true
+name: Product
+url: '/product/:urlName'
+---
+
+{{ open_form({'class': 'custom PRD__form', 'onsubmit': 'return false'}) }}
+    {% if product %}
+        <div class="container buffer-bottom PRD" id="product-page">
+            <div class="row">
+            {{ partial('shop-product') }}
+            </div>
+        </div>
+        
+        {# set related_products = product.list_related_products().find_all() %}
+        {% if related_products.count %}
+        <div class="container-fluid bg-muted buffer-top buffer-bottom related-items">
+            <div class="row">
+                <div class="center-block text-center">
+                    <h3 class="stamp">Related Items</h3>
+
+                    {{ render_partial('shop:product_list', {'products': related_products}) }}
+                    
+                </div>
+            </div>
+        </div>
+        {% endif #}
+    {% else %}
+        <h2>We are sorry, the requested product was not found.</h2>
+    {% endif %}
+{{ close_form() }}

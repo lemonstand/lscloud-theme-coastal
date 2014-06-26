@@ -1,0 +1,80 @@
+---
+action: 'shop:receipt'
+template: shop
+protocol: all
+published: true
+name: Receipt
+url: '/receipt/:paymenthash'
+---
+
+<div class="container">
+{% if invoice %}
+
+    <h4>Please keep this information for your records.</h4>
+
+    <div class="row buffer-bottom">
+
+        <div class="col-sm-4">
+            <h4 class="breaker">Order Details</h4>
+            <ul class="list-simple small">
+                <li><strong>Order number:</strong> #{{ invoice.order.number }}</li>
+                {% if payment.guessPaymentMethod() %}
+                <li><strong>Payment method:</strong> {{ payment.guessPaymentMethod().name }}</li>
+                {% endif %}
+                <li><strong>Order Date:</strong> {{ invoice.order.created_at.format('M jS, Y') }}</li>
+            </ul>
+        </div>
+
+        <div class="col-sm-4">
+            <h4 class="breaker">Billing Address</h4>
+            <address class="small">
+                {{ invoice.order.billingAddress.first_name }} {{ invoice.order.billingAddress.last_name }}<br />
+                {{ invoice.order.billingAddress.street_address }}<br />
+                {{ invoice.order.billingAddress.city }}, {{ invoice.order.billingAddress.state.name }} {{ invoice.order.billingAddress.postal_code }}<br />
+                Phone: {{ invoice.order.billingAddress.phone }}
+            </address>
+        </div>
+
+        <div class="col-sm-4">
+            <h4 class="breaker">Shipping Address</h4>
+
+            {% for shipment in invoice.shipments %}
+            <address class="small">
+                {{ shipment.shippingAddress.first_name }} {{ shipment.shippingAddress.last_name }}<br />
+                {{ shipment.shippingAddress.street_address }}<br />
+                {{ shipment.shippingAddress.city }}, {{ shipment.shippingAddress.state.name }} {{ shipment.shippingAddress.postal_code }}<br />
+                Phone: {{ shipment.shippingAddress.phone }}
+            </address>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+        {{ partial('shop-invoiceitems') }}
+        </div>
+    </div>
+      
+    {% if invoice.isPaid() %}
+    <div class="row buffer-bottom">
+        {{ partial('shop-invoicetotals') }}
+    </div>
+
+    <div class="row buffer-bottom"> 
+        <div class="col-sm-12 text-right">
+            <a class="btn btn-dark" href="{{ site_url('shop') }}">Continue Shopping</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="row buffer-bottom"> 
+        <div class="col-sm-12 text-right">
+            <a class="btn btn-primary" href="{{ site_url('review/'~order.order_hash) }}">Pay the order</a>
+        </div>
+    </div>
+    {% endif %}
+    
+{% else %}
+    <p class="flash error">Invoice not found.</p>
+{% endif %}
+</div>

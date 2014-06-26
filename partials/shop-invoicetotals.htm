@@ -1,0 +1,49 @@
+<!-- <p><strong>Discount applied:</strong> <i>{{ 0|currency }}</i></p>
+<p><strong>Subtotal:</strong> <i>{{ invoice.subtotal|currency }}</i></p>
+<p><strong>Sales Tax:</strong> <i>{{ invoice.tax_total|currency }}</i></p>
+<p><strong>Shipping:</strong> <i>{{ invoice.total_shipping_quote|currency }}</i></p>
+{% if invoice.shipping_tax %}
+  <p><strong>Shipping Taxes:</strong> <i>{{ order.shipping_tax|currency }}</i></p>
+{% endif %}
+<p class="subtotal"><strong>Total:</strong>  <i>{{ invoice.total|currency }}</i></p> -->
+
+<!-- Order Summary -->
+<div class="col-sm-6 col-sm-offset-6 data-list">
+    <h4 class="breaker">Order Summary</h4>            
+
+    <p class="row">
+        <strong class="col-sm-6">Subtotal</strong>
+        <span class="col-sm-6 text-right">{{ invoice.subtotal_invoiced|currency }}</span>
+    </p>
+
+    {% if invoice.discount_total > 0 %}
+    <p class="row">
+        <strong class="col-sm-6">Discount applied</strong>
+        <span class="col-sm-6 newprice text-right">{{ invoice.discount_total|currency }}</span>
+    </p>
+    {% endif %}
+
+    <p class="row">
+        <strong class="col-sm-6">Sales Tax</strong>
+        <span class="col-sm-6 text-right">{{ invoice.total_sales_tax|currency }}</span>
+    </p>
+
+    <p class="row">
+        <strong class="col-sm-6">Shipping</strong>
+        <span class="col-sm-6 text-right">{{ invoice.total_shipping_quote|currency }}</span>
+    </p>
+
+    {% if invoice.total_shipping_tax %}
+    <p class="row">
+        <strong class="col-sm-6">Shipping Taxes</strong>
+        <span class="col-sm-6 text-right">{{ invoice.total_shipping_tax|currency }}</span>
+    </p>
+    {% endif %}
+
+    <p class="row CART__total">
+        <strong class="col-sm-6">Total</strong>
+        <strong class="col-sm-6 text-right text-pop">{{ invoice.total|currency }}</strong>
+    </p>
+
+</div>
+<!-- // Order Summary -->

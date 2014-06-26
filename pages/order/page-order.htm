@@ -1,0 +1,86 @@
+---
+action: 'shop:order'
+template: shop
+published: true
+name: Order
+url: '/order/:orderId'
+---
+<div class="container buffer-bottom">
+    <div class="row">
+
+        {{ partial('account-sidenav') }}        
+
+        <div class="col-xs-12 col-sm-10">
+        {% if order %}
+            <div class="row buffer-bottom">
+                <div class="col-sm-4">
+                    <h4 class="breaker">Order Details</h4>
+                    <ul class="list-simple small">
+                        <li><strong>Order number:</strong> #{{ order.id }}</li>
+                        {% if order.invoices[0].payments().last().guessPaymentMethod() %}
+                        <li><strong>Payment method:</strong> {{ order.invoices[0].payments().last().guessPaymentMethod().name }}</li>
+                        {% endif %}
+                        <li><strong>Order Date:</strong> {{ order.created_at.format('M jS, Y') }}</li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4">
+                    <h4 class="breaker">Billing Address</h4>
+                    <address class="small">
+                        {{ order.billingAddress.first_name }} {{ order.billingAddress.last_name }}<br />
+                        {{ order.billingAddress.street_address }}<br />
+                        {{ order.billingAddress.city }}, {{ order.billingAddress.state.name }} {{ order.billingAddress.postal_code }}<br />
+                        Phone: {{ order.billingAddress.phone }}
+                    </address>
+                </div>
+
+                <div class="col-sm-4">
+                    <h4 class="breaker">Shipping Address</h4>
+
+                    {% for invoice in order.invoices %}
+                    {% for shipment in invoice.shipments %}
+                    <address class="small">
+                        {{ shipment.shippingAddress.first_name }} {{ shipment.shippingAddress.last_name }}<br />
+                        {{ shipment.shippingAddress.street_address }}<br />
+                        {{ shipment.shippingAddress.city }}, {{ shipment.shippingAddress.state.name }} {{ shipment.shippingAddress.postal_code }}<br />
+                        Phone: {{ shipment.shippingAddress.phone }}
+                    </address>
+                    {% endfor %}
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            {% if order.outputTrackingCodes() %}
+            <div class="row">
+            {{ order.outputTrackingCodes() }}
+            </div>
+            {% endif %}
+          
+            <div class="row buffer-bottom">
+                <div class="col-sm-12">
+                    {{ partial('shop-orderitems') }}
+                </div>
+            </div>
+
+            <div class="row buffer-bottom">
+                <div class="col-sm-4">
+                    {% if order.payment_method.has_payment_form() and not order.payment_processed() %}
+                        <a class="button" href="{{ root_url('/review/'~order.order_hash) }}">Pay the order</a>
+                    {% endif %}
+                </div>
+                
+                {{ partial('shop-ordertotals') }}
+            </div>
+          
+        {% else %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="flash error">Order not found</p>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+
+    </div>
+</div>

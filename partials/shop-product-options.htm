@@ -1,0 +1,31 @@
+{% if product.options.count %}
+    
+    {% for index, option in product.options %}
+    <div class="form-group">
+        <label class="h5" for="{{ 'option-'~index }}">{{ option.name }}</label>
+
+        {% if option.name == "Size" %}
+
+        <div class="size-group">
+            {% for key, value in option.values %}
+            <label class="radio-inline">
+                <input type="radio" id="inlineCheckbox1" value='{{ key }}' {{ radio_state(postedOptions[option.id], key) }} name="options[{{ option.id }}]" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product" />
+                <span class="value">{{ value }}</span>
+            </label>
+            {% endfor %}
+        </div>
+
+        {% else %}
+
+        <select id="{{ 'option-'~index }}" name="options[{{ option.id }}]" class="form-control product-option" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product">
+        {% for key, value in option.values %}
+            <option value='{{ key }}' {{ option_state(postedOptions[option.id], key) }}>{{ value }}</option>
+        {% endfor %}
+        </select>
+
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+{% endif %}

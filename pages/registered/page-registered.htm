@@ -1,0 +1,23 @@
+---
+template: shop
+protocol: all
+published: true
+name: Registered
+url: /registered
+---
+
+<div class="container buffer-bottom">
+	<div class="row">
+
+  		<div class="col-sm-12">	    	
+	    	{% if customer %}
+	    		<h2 class="mb1">Thank you for registering.</h2>
+	    		<p>A confirmation email has been sent to your email address.</p>
+	        	<p>You have been automatically logged in. <a href="/">Continue shopping</a></p>
+	    	{% else %}
+	        	<p>Please <a href="{{ root_url('/login') }}">sign in</a> using your email and password.</p>
+	    	{% endif %}
+    	</div>
+
+ 	 </div>
+</div>

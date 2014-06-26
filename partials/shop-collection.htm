@@ -1,0 +1,15 @@
+---
+description: 'Displays a product collection. Set ''collectionCode'' to the api code of the collection to display.'
+---
+{% set collection = collectionCode|collection %}
+
+{% if collection %}
+	<div class="row break-top">
+        <div class="col-sm-12 text-center">
+            <h3 class="stamp">{{collection.name}}</h3>
+        </div>
+    </div>
+  	{{ partial('shop-product-list', { 'products': collection.products }) }}
+{% else %}
+  	<p>The product collection {{ collectionCode }} not found. Please create this group on the Shop/Collections page.</p>
+{% endif %}

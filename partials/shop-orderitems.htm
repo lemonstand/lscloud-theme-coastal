@@ -1,0 +1,42 @@
+<table class="table table-mobile cart-table CART__table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Product</th>
+            <th class="narrow">Quantity</th>
+            <th class="narrow">Price</th>
+            <th class="narrow">Discount</th>
+            <th class="narrow">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for invoice in order.invoices %}
+        {% for shipment in invoice.shipments %}
+        {% for item in shipment.shipmentItems %}
+        <tr>
+            <td class="td-col-4">
+                <a href="/product/{{ item.product.url_name }}">
+                    <img src="{{ item.product.images.first.thumbnail(80, 80)|default('http://placehold.it/80x80') }}" />
+                </a>
+            </td>
+            <td class="td-col-4">
+                <h6><a href="/product/{{ item.product.url_name }}">{{ item.product.name }}</a>
+                </h6>
+                {% set description = item.optionsString() %} {% if description %}
+                <span class="text-muted small">{{ description|unescape }}</span>
+                {% endif %}
+            </td>
+            <td class="narrow td-col-4">{{ item.quantity|number_format(0) }}</td>
+            <td class="narrow">{{ item.pivot.price|currency }}</td>
+            {% if item.discount %}
+            <td class="narrow newprice">{{ item.discount|currency }}</td>
+            {% else %}
+            <td class="narrow">{{ 0|currency }}</td>
+            {% endif %}
+            <td class="narrow text-pop">{{ (item.quantity *item.pivot.price)|currency }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>

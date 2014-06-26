@@ -1,0 +1,72 @@
+---
+action: 'shop:login'
+template: inner
+protocol: all
+published: true
+name: Checkout
+url: /checkout-start
+---
+{# TODO: this page should be for logged out shoppers only #}
+
+<div class="container buffer-bottom">
+
+    {% if customer %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="breaker">Welcome back</h4>
+            <p>Continue checkout as the currently logged in customer, {{ customer.first_name }}.</p>
+            <a class="button" href="{{ site_url('checkout') }}">Continue as {{ customer.first_name }}</a>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="breaker">Continue checkout as guest</h4>
+            <p>Logout and continue checkout as guest. No sign up required.</p>
+            <a class="button" href="{{ site_url('logout/?redirect=checkout') }}">Logout</a>
+        </div>
+    </div>
+    
+    {% else %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="breaker">Returning Customers</h4>
+
+            {{ open_form({'data-ajax-handler': 'shop:onLogin', 'class' : 'form-horizontal'}) }}
+
+                <div class="form-group">
+                    <label for="login_email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control input-sm" id="login_email" name="email" value="{{ post('email') }}" size="40" autofocus />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login_password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control input-sm" id="login_password" name="password" size="20" />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-sm btn-dark">Login</button>
+                        <a class="btn btn-sm btn-link forgotpass" href="{{ site_url('password-restore') }}">Forgot your password?</a>
+                    </div>
+                </div>
+              
+                <input type="hidden" name="redirect" value="{{ site_url('/checkout') }}"/>
+            
+            {{ close_form() }}
+        </div>
+
+        <div class="col-sm-6">
+            <h4 class="breaker">Continue checkout as guest</h4>
+            <p>Continue checkout as guest. No sign up required.</p>
+            <a class="btn btn-sm btn-dark" href="{{ site_url('checkout') }}">Continue as guest</a>
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>

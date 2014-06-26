@@ -1,0 +1,112 @@
+---
+action: 'shop:login'
+template: inner
+protocol: all
+published: true
+name: Login
+url: /login
+---
+
+<div class="container buffer-bottom">
+    <div class="row">
+        <div class="col-sm-12">
+        {{ flash() }}
+        </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-sm-6">
+
+            <h4 class="breaker">Returning Customers</h4>
+
+            {{ open_form({'data-ajax-handler': 'shop:onLogin', 'data-validation-message' : '', 'class' : 'form-horizontal' }) }}
+
+                <div class="form-group">
+                    <label for="login_email" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control input-sm" id="login_email" name="email" value="{{ post('email') }}" size="40" autofocus />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="login_password" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control input-sm" id="login_password" name="password" size="20" />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-sm btn-dark">Login</button>
+                        <a class="btn btn-sm btn-link forgotpass" href="{{ site_url('password-restore') }}">Forgot your password?</a>
+                    </div>
+                </div>
+                
+                <input type="hidden" name="redirect" value="{{ site_url(root_url('/')) }}"/>
+      
+            {{ close_form() }}
+        </div>
+    
+        <div class="col-sm-6">
+    
+            <h4 class="breaker">New Customers</h4>
+  
+            {{ open_form({'data-ajax-handler': 'shop:onSignup', 'data-validation-message' : '', 'class' : 'form-horizontal' }) }}
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Your Name</label>
+                    <div class="col-sm-9 form-inline">
+                        <div class="form-group">
+                            <label for="signup[first_name]" class="control-label sr-only">First Name</label>
+                            <input type="text" class="form-control input-sm" id="signup[first_name]" name="signup[first_name]" value="{{ post('signup[first_name]') }}" size="20" placeholder="First Name" />
+                            <span class="error small text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signup[last_name]" class="control-label sr-only">Last Name</label>
+                            <input type="text" class="form-control input-sm" id="signup[last_name]" name="signup[last_name]" value="{{ post('signup[last_name]') }}" size="20" placeholder="Last Name" />
+                            <span class="error small text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup[email]" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control input-sm" id="signup[email]" name="signup[email]" value="{{ post('signup[email]') }}" size="40" />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup[password]" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control input-sm" id="signup[password]" name="signup[password]" value="" size="16" />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup[password_confirmation]" class="col-sm-3 control-label">Confirm</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control input-sm" id="signup[password_confirmation]" name="signup[password_confirmation]" value="" size="16" />
+                        <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-sm btn-dark">Submit</button>
+                    </div>
+                </div>
+
+                <input type="hidden" name="autologin" value="1" />
+                <input type="hidden" name="redirect" value="{{ site_url('registered') }}"/>
+
+            {{ close_form() }}
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!-- {% if discount %}
+  <p><strong>Discount applied:</strong> <i>{{ discount|currency }}</i></p>
+{% endif %}
+<p><strong>Cart total:</strong> <i>{{ totals.subtotalNoTax|currency }}</i></p>
+{% if totals.totalShippingQuote %}
+  <p><strong>Shipping:</strong> <i>{{ totals.totalShippingQuote|currency }}</i></p>
+{% endif %}
+<p><strong>Tax:</strong> <i>{{ totals.totalTax|currency }}</i></p>
+<p class="subtotal"><strong>Total:</strong>  <i>{{ totals.total|currency }}</i></p>   -->
+
+<!-- Order Summary -->
+
+<h4 class="breaker">Order Summary</h4>            
+
+<p class="row">
+    <strong class="col-sm-6">Subtotal</strong>
+    <span class="col-sm-6 text-right">{{ totals.subtotalNoTax|currency  }}</span>
+</p>
+
+{% if discount %}
+<p class="row">
+    <strong class="col-sm-6">Discount applied</strong>
+    <span class="col-sm-6 newprice text-right">{{ discount|currency }}</span>
+</p>
+{% endif %}
+
+{% if totals.totalShippingQuote %}
+<p class="row">
+    <strong class="col-sm-6">Shipping</strong>
+    <span class="col-sm-6 text-right">{{ totals.totalShippingQuote|currency }}</span>
+</p>
+{% endif %}
+
+<p class="row">
+    <strong class="col-sm-6">Sales Tax</strong>
+    <span class="col-sm-6 text-right">{{ totals.totalTax|currency }}</span>
+</p>
+
+<p class="row CART__total">
+    <strong class="col-sm-6">Estimated Total</strong>
+    <span class="col-sm-6 text-right">{{ totals.total|currency }}</span>
+</p>
+
+<!-- // Order Summary -->

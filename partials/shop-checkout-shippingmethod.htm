@@ -1,0 +1,54 @@
+{{ open_form({'class': 'custom'}) }}
+<div class="row buffer-bottom">
+    <div class="col-sm-6" id="shipping-method">
+
+        <h4>Choose a shipping method.</h4>
+       
+        {% if shippingOptions %}
+        <input type="hidden" value="" name="shippingMethod">
+        <table class="table" id="shipping-methods">
+            {% for index, option in shippingOptions %}
+            <tr>
+                <td>
+                    <div class="radio">
+                        <label for="{{ 'option'~index }}">
+                            <input name="shippingMethod" {{ option.error_hint ? 'disabled' : null }} value="{{ index }}" {{ radio_state(option.shippingMethodId, shippingMethod) }} type="radio" id="{{ 'option'~index }}" />
+                            <span class="choice-title">
+                                {{ option.shippingMethodName }}
+                                {% if option.shippingServiceName %}: {{ option.shippingServiceName }}{% endif %}
+                            </span>
+                        </label>
+                    </div>
+                    {% if option.error_hint %}
+                    <span class="choice-description error-hint">{{ option.error_hint }}</span>
+                    {% endif %}
+                </td>
+                <td class="narrow text-right">
+                    {% if not option.error_hint %} {{ not option.is_free ? option.quote|currency : 'free' }} {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>We are sorry, there are no shipping options available for your location.</p>
+        {% endif %}  
+    </div>
+</div>
+
+<div class="row buffer-bottom">
+    <div class="col-sm-6 col-sm-offset-6 data-list" id="checkout-totals">
+        {{ partial('shop-checkout-totals') }}
+    </div>
+</div>
+
+{% if shippingOptions %}
+<div class="row">
+    <div class="col-sm-12 text-right">
+        <a class="btn btn-primary" href="#" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart">Place order &amp; pay</a>
+    </div>
+</div>
+{% endif %}
+<input type="hidden" name="step" value="shipping_method,review" />
+<input type="hidden" name="nextStep" value="pay" />
+
+{{ close_form }}

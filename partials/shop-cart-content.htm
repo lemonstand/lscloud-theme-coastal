@@ -1,0 +1,110 @@
+{{ flash() }}
+
+{% if itemCount %}
+    <div class="row">
+        <div class="col-sm-12">
+        {{ partial('shop-cart-items', {'edit_cart': true}) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <a class="btn btn-pop btn-sm" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Update cart</a>
+        </div>
+    </div>
+  
+    <div class="row buffer-top mb1">
+
+        <!-- Promo Codes -->
+        <!-- <div class="col-sm-4">
+            <h4 class="breaker">Promo Codes</h4>
+
+            <div class="form-group">
+                <input type="text" id="coupon" name="coupon" value="{{ coupon_code }}" placeholder="Promo code" disabled />
+            </div>
+            <div class="form-group">
+                <a class="btn btn-default btn-xs" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Apply Promo</a>
+            </div>
+        </div> -->
+        <!-- // Promo Codes -->
+
+        <!-- Shipping Estimate -->
+        <!-- <div class="col-sm-5">
+            <h4 class="breaker">Shipping rates calculator</h4>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <label class="small" for="country">Country</label>
+                    <select id="country" name="country" data-state-select="state" data-current-state="{{ shipping_info.state }}">
+                        {% for country in countries %}
+                          <option value="{{ country.id }}" {{ option_state(country.id, shipping_info.country) }}>{{ country.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="state">State</label>
+                    <select id="state" name="state"> 
+                        {# partial('shop-stateoptions', {'states': states, 'current_state': shipping_info.state}) #}
+                    </select>
+                </div>
+
+                <div class="col-sm-4">
+                    <label for="zip">Zip/Postal Code</label>
+                    <input name="zip" type="text" value="" class="form-control input-sm" size="6" value="{{ shipping_info.zip }}" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="btn btn-default btn-xs" href="#" data-ajax-handler="shop:on_evalShippingRate" data-ajax-update="#shipping_options=shopestimatedshippingoptions">Calculate</a>
+
+                    <div id="shipping_options"></div>
+                </div>
+            </div>                    
+        </div> -->
+        <!-- // Shipping Estimate -->
+
+        <!-- Order Summary -->
+        <div class="col-sm-6 col-sm-offset-6 data-list">
+            <h4 class="breaker">Order Summary</h4>            
+
+            <p class="row">
+                <strong class="col-sm-6">Subtotal</strong>
+                <span class="col-sm-6 text-right">{{ cart.getSubtotal()|currency }}</span>
+            </p>
+
+            {% if cart.getDiscountTotal() > 0 %}
+            <p class="row">
+                <strong class="col-sm-6">Discount applied</strong>
+                <span class="col-sm-6 text-right newprice">{{ cart.getDiscountTotal()|currency }}</span>
+            </p>
+            {% endif %}
+
+            <p class="row CART__total">
+                <strong class="col-sm-6">Estimated total</strong>
+                <span class="col-sm-6 text-right text-pop">{{ cart.getTotal()|currency }}</span>
+            </p>
+
+        </div>
+        <!-- // Order Summary -->
+
+    </div>
+
+    <div class="row buttons-block form-inline text-right">
+        <div class="col-sm-12">
+            <a class="btn btn-default" href="{{ site_url('shop') }}">Continue shopping</a>
+            {% if customer %}
+            <a class="btn btn-dark" href="{{ site_url('/checkout') }}">Checkout</a>
+            {% else %}
+            <a class="btn btn-dark" href="{{ site_url('/checkout-start') }}">Checkout</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% else %}
+    <div class="row">
+        <div class="col-sm-12">
+            <a class="btn btn-pop" href="{{ site_url('shop') }}">Your cart is empty! Continue shopping.</a>
+        </div>
+    </div>
+{% endif %}

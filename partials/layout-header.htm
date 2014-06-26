@@ -1,0 +1,78 @@
+<!--[if lt IE 10]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<header class="navbar navbar-inverse navbar-static-top siteheader" role="header">
+    <div class="container">
+        <p class="navbar-text pull-left siteheader__session">
+            {% if customer %}
+            Welcome, {{ customer.first_name }}!
+            <a href="{{ site_url('logout') }}">Logout</a>
+            {% else %}
+            <a href="{{ site_url('login') }}">Login or Register</a>
+            {% endif %}
+        </p>
+
+        <p class="navbar-text pull-right siteheader__minicart" id="mini-cart">
+            {% if customer %}
+            <a href="{{ site_url('profile') }}">{{ customer.first_name }}'s Account</a> &middot;
+            {% endif %}
+            {{ partial('shop-minicart') }}
+        </p>
+    </div>
+</header>
+
+<nav class="navbar navbar-default sitenavbar" role="navigation">
+    <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#global-nav">
+                <span class="text">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">COASTAL</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="global-nav">
+
+            {% set active_page = globals.active_page|default('home') %}
+            {% tree categories %}
+            <ul class="nav navbar-nav sitenav sitenav--primary">
+                {% for category in tree.items %}
+                <li><a href="/category/{{ category.url_name }}"{{ active_page == category.name ? ' class="active"' : null }}>{{ category.name }}</a></li>
+                {% endfor %}
+                <li><a class="text-bright" href="/sale/">Sale</a></li>
+            </ul>
+            {% endtree %}
+
+            {{ open_form({'class': 'navbar-form navbar-right sitesearch', 'method': 'get', 'action': site_url('search')}) }}
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" name="query" value="{{query|unescape}}" />
+                </div>
+                <button type="submit" class="btn btn-default">Go</button>
+            {{ close_form() }}
+        </div>
+        <!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+
+<main role="main">
+
+    {% if titleArea %}
+    <div class="container buffer-bottom">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>{{ page.title }}</h1>
+            </div>
+                    
+            <!-- <div class="col-sm-6 text-right" id="breadcrumbs-area">
+                {{ code_block('breadcrumbs') }}
+            </div> -->
+        </div>
+    </div>
+    {% endif %}

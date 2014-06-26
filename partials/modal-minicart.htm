@@ -1,0 +1,50 @@
+<div class="modal-dialog modal-md">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <a href="#" class="modal-title">
+                <h5>Shopping Cart</h5>
+                <p class="small">{{ cart.getItemNum() }} items</p>
+            </a>
+        </div>
+
+        <div class="modal-body">
+            <table class="table mini-cart-table">
+                <tbody>
+
+                    {% for item in cart.listitems|slice(0, 3) %}
+                    <tr>
+                        <td class="td-thumb">
+                            <a class="hide-for-small" href="/product/{{ item.product.url_name }}">
+                                <img src="{{ item.product.images.first.thumbnail(80, 80)|default('http://placehold.it/80x80') }}" alt="" title="">
+                            </a>
+                        </td>
+                        <td>
+                            <div class="short-description">
+                                <h6><a href="/product/cap">{{ item.product.name }}</a></h6>
+                                <ul class="list-simple">
+                                    {% set description = item.optionsString() %}
+                                    {% if description %}
+                                    <li class="text-muted small">{{ description|unescape }}</li>
+                                    {% endif %}
+                                    <li class="text-muted small">Qty: {{ item.quantity }}</li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                             <span class="small">{{ item.fullPrice()|currency }}</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <p class="small"><strong>Sub-total</strong> {{ cart.getSubtotal()|currency }}</p>
+            <a href="{{ site_url('/cart') }}" class="btn btn-sm btn-bright">Go to Cart</a>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
