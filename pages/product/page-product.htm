@@ -10,9 +10,7 @@ url: '/product/:urlName'
 {{ open_form({'class': 'custom PRD__form', 'onsubmit': 'return false'}) }}
     {% if product %}
         <div class="container buffer-bottom PRD" id="product-page">
-            <div class="row">
             {{ partial('shop-product') }}
-            </div>
         </div>
         
         {# set related_products = product.list_related_products().find_all() %}

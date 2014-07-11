@@ -7,10 +7,10 @@ name: Category
 url: '/category/:urlName@/:page?'
 ---
 
-<div class="container buffer-bottom CATEGORY">
+<div class="container CATEGORY">
 
     <div class="row">
-        <div class="col-sm-2 hidden-xs">
+        <div class="col-sm-2 CATEGORY__left">
             {{ partial('shop-categories') }}            
         </div>
 
@@ -24,10 +24,18 @@ url: '/category/:urlName@/:page?'
             {{ partial('shop-category-hero') }}
             {% endif %}
 
+            <div class="row visible-xs-block CATEGORY__nav">
+               <div class="col-xs-12 bg-muted">
+                    <h4 class="text-mid">{{ category.name }}</h4>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidenav-category">
+                        <span class="text">View Categories</span>
+                    </button>
+                </div>
+            </div>
+
             {{ 
                 partial('shop-product-list', {
-                    'products': products,
-                    'empty_text': 'There are no products in this category.'
+                    'products': products
                 }) 
             }} 
         {% endif %}

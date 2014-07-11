@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    "use strict";
     (function($) {
+        "use strict";
         $(document).on("click", ".js-thumblist a", function(e) {
             e.preventDefault();
             var $el = $(this);
@@ -25,6 +25,9 @@ $(document).ready(function() {
                 });
             }
         });
+    });
+    $("#modal-minicart").on("mouseleave", ".modal-dialog", function() {
+        $("#modal-minicart").modal("hide");
     });
     (function($) {
         var $source = $("#billing-info");

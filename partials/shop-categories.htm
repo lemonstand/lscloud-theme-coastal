@@ -1,10 +1,12 @@
+<div class="collapse navbar-collapse" id="sidenav-category" role="navigation">
 {% tree categories %}
-	<ul class="sidenav">
-		{% for category in tree.items %}
-            <li>
-                <a href="/category/{{ category.fullUrlName }}">{{ category.name }}</a>
-                {% branch category.children %}
-            </li>
-        {% endfor %}
-    </ul>
+    <ul class="nav navbar-nav sidenav">
+	{% for category in tree.items %}
+        <li>
+            <a href="/category/{{ category.fullUrlName }}">{{ category.name }}</a>
+            {% branch category.children %}
+        </li>
+    {% endfor %}
+	</ul>
 {% endtree %}
+</div>

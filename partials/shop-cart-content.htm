@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12 text-right">
-            <a class="btn btn-pop btn-sm" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Update cart</a>
+            <a class="btn btn-dark btn-sm" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Update cart</a>
         </div>
     </div>
   
@@ -92,11 +92,11 @@
 
     <div class="row buttons-block form-inline text-right">
         <div class="col-sm-12">
-            <a class="btn btn-default" href="{{ site_url('shop') }}">Continue shopping</a>
+            <a class="btn btn-link" href="{{ site_url('shop') }}">Continue shopping</a>
             {% if customer %}
-            <a class="btn btn-dark" href="{{ site_url('/checkout') }}">Checkout</a>
+            <a class="btn btn-pop" href="{{ site_url('/checkout') }}">Checkout</a>
             {% else %}
-            <a class="btn btn-dark" href="{{ site_url('/checkout-start') }}">Checkout</a>
+            <a class="btn btn-pop" href="{{ site_url('/checkout-start') }}">Checkout</a>
             {% endif %}
         </div>
     </div>
