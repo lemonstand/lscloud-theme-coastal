@@ -5,35 +5,71 @@ published: true
 name: Contact
 url: /contact
 ---
-<div class="row">
-  <div class="content twelve columns">
+
+<div class="container buffer-bottom">
     <div class="row">
-      <div class="six columns">
-        <h3>Mailing Address</h3>
-        <p>
-            Customer Service / ECommerce<br />
-            0000 Madeup Street<br />
-            Vancouver, BC<br />
-            000 000<br />
-            Canada
-        </p>
-        <p class="data-list">
-            <strong>E-mail:</strong> comments@email.com<br />
-            <strong>Toll FREE:</strong> 1-800-000-0000
-        </p>
-      </div>
-      <div class="six columns">
-        <h3>Opening hours</h3>
-        <p class="data-list">
-            Monday: 9 AM - 11 PM<br />
-            Tuesday: 9 AM - 11 PM<br />
-            Wednesday: 9 AM - 11 PM<br />
-            Thursday: 9 AM - 12 AM<br />
-            Friday: 9 AM - 12 AM<br />
-            Saturday: 9 AM - 7 PM<br />
-            Sunday: 9 AM - 7 PM
-        </p>
-      </div>
+
+    <div class="col-sm-6">
+        
+        {{ flash() }}
+    
+        {{ open_form({'data-ajax-handler': 'system:onSendMessage'}) }}
+            <h3 class="breaker">Send us a message</h3>
+        
+            <div class="form-group">
+                <label for="contact_email">E-mail Address *</label>
+                <input type="email" id="contact_email" name="fields[email]" value="" class="form-control" size="30" />
+                <span class="error small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_name">Your name *</label>
+                <input type="text" id="contact_name" name="fields[name]" value="" class="form-control" size="30" />
+                <span class="error small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact_message">Message *</label>
+                <textarea id="contact_message" name="fields[message]" value="" rows="3" class="form-control" ></textarea>
+                <span class="error small text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Submit</button>
+                <input type="text" name="hp" value="" style="display: none"/>
+            </div>
+        {{ close_form() }}
+
     </div>
-  </div>
+
+    <aside class="col-sm-3 col-sm-offset-3">
+
+        <div class="mb1">
+            <h4>Mailing Address</h4>
+            <p>
+                Customer Service / ECommerce<br />
+                0000 Madeup Street<br />
+                Vancouver, BC<br />
+                000 000<br />
+                Canada
+            </p>
+            <p>
+                <strong>E-mail:</strong> comments@email.com<br />
+                <strong>Toll FREE:</strong> 1-800-000-0000
+            </p>
+        </div>
+
+        <div class="mb1">
+            <h4>Opening hours</h4>
+            <ul class="list-unstyled">
+                <li>Monday: 9 AM - 11 PM</li>
+                <li>Tuesday: 9 AM - 11 PM</li>
+                <li>Wednesday: 9 AM - 11 PM</li>
+                <li>Thursday: 9 AM - 12 AM</li>
+                <li>Friday: 9 AM - 12 AM</li>
+                <li>Saturday: 9 AM - 7 PM</li>
+                <li>Sunday: 9 AM - 7 PM</li>
+            </ul>
+        </div>
+    </aside>
 </div>
