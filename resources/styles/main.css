@@ -5319,6 +5319,9 @@ Form Elements
   margin-left: 0;
   margin-right: 0; }
 
+label.full {
+  display: block; }
+
 .form-control {
   border-radius: 0; }
   .form-control:focus {
@@ -5661,6 +5664,12 @@ Layout helpers
 
 .mb2 {
   margin-bottom: 60px; }
+
+.mr05 {
+  margin-right: 15px; }
+
+.mr1 {
+  margin-right: 30px; }
 
 @media (max-width: 767px) {
   .mb1--xs {

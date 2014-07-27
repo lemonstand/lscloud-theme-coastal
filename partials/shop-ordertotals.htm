@@ -16,10 +16,10 @@
         <span class="col-sm-6 text-right">{{ order.subtotal_invoiced|currency }}</span>
     </p>
 
-    {% if order.discount_total > 0 %}
+    {% if order.total_discount %}
     <p class="row">
         <strong class="col-sm-6">Discount applied</strong>
-        <span class="col-sm-6 newprice text-right">{{ order.discount_total|currency }}</span>
+        <span class="col-sm-6 newprice text-right">{{ order.total_discount|currency }}</span>
     </p>
     {% endif %}
 

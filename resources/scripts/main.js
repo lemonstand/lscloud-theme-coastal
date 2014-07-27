@@ -71,6 +71,37 @@ $(document).ready(function() {
             }
         }
     })(jQuery);
+    $("#cart-content").on("keydown", "input#coupon", function(ev) {
+        if (ev.which === 13) {
+            $(this).sendRequest("shop:cart", {
+                update: {
+                    "#cart-content": "shop-cart-content",
+                    "#mini-cart": "shop-minicart"
+                },
+                extraFields: {
+                    set_coupon_code: 1
+                }
+            });
+        }
+    });
+    $("#cart-content").on("keydown", "input.quantity", function(ev) {
+        if (ev.which === 13) {
+            $(this).sendRequest("shop:cart", {
+                update: {
+                    "#cart-content": "shop-cart-content",
+                    "#mini-cart": "shop-minicart"
+                }
+            });
+        }
+    });
+    $("#checkout-page").on("change", "#shipping-methods input", function() {
+        $(this).sendRequest("shop:onCheckoutShippingMethod", {
+            update: {
+                "#checkout-totals": "shop-checkout-totals",
+                "#mini-cart": "shop-minicart"
+            }
+        });
+    });
     $(document).on("change", "#payment_method input", function() {
         $("#payment_form").html('<i class="fa fa-refresh fa-spin"/>');
         $(this).sendRequest("shop:onUpdatePaymentMethod", {

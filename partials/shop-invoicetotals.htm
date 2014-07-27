@@ -33,10 +33,10 @@
         <span class="col-sm-6 text-right">{{ invoice.total_shipping_quote|currency }}</span>
     </p>
 
-    {% if invoice.total_shipping_tax %}
+    {% if invoice.order.total_shipping_tax > 0 %}
     <p class="row">
         <strong class="col-sm-6">Shipping Taxes</strong>
-        <span class="col-sm-6 text-right">{{ invoice.total_shipping_tax|currency }}</span>
+        <span class="col-sm-6 text-right">{{ invoice.order.total_shipping_tax|currency }}</span>
     </p>
     {% endif %}
 

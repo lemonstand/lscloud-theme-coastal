@@ -15,74 +15,81 @@
     <div class="row buffer-top mb1">
 
         <!-- Promo Codes -->
-        <!-- <div class="col-sm-4">
+        <div class="col-sm-3">
             <h4 class="breaker">Promo Codes</h4>
 
             <div class="form-group">
-                <input type="text" id="coupon" name="coupon" value="{{ coupon_code }}" placeholder="Promo code" disabled />
+                <input class="form-control input-sm" type="text" id="coupon" name="coupon" value="{{ coupon_code }}" placeholder="Promo code" />
             </div>
             <div class="form-group">
-                <a class="btn btn-default btn-xs" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Apply Promo</a>
+                <a class="btn btn-dark btn-xs" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Apply Promo</a>
             </div>
-        </div> -->
+        </div>
         <!-- // Promo Codes -->
 
         <!-- Shipping Estimate -->
-        <!-- <div class="col-sm-5">
+        <!--
+        <div class="col-sm-5">
             <h4 class="breaker">Shipping rates calculator</h4>
 
-            <div class="row">
-                <div class="col-sm-4">
-                    <label class="small" for="country">Country</label>
-                    <select id="country" name="country" data-state-select="state" data-current-state="{{ shipping_info.state }}">
+            <div class="form-inline">
+                <div class="form-group mr05">
+                    <label class="small full" for="country">Country</label>
+                    <select class="form-control" id="country" name="country" data-state-select="state" data-current-state="{{ shipping_info.state }}">
                         {% for country in countries %}
                           <option value="{{ country.id }}" {{ option_state(country.id, shipping_info.country) }}>{{ country.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
-                <div class="col-sm-4">
-                    <label for="state">State</label>
-                    <select id="state" name="state"> 
+                <div class="form-group mr05">
+                    <label class="small full" for="state">State</label>
+                    <select id="state" name="state" class="form-control"> 
                         {# partial('shop-stateoptions', {'states': states, 'current_state': shipping_info.state}) #}
                     </select>
                 </div>
 
-                <div class="col-sm-4">
-                    <label for="zip">Zip/Postal Code</label>
+                <div class="form-group">
+                    <label class="small full" for="zip">Zip/Postal Code</label>
                     <input name="zip" type="text" value="" class="form-control input-sm" size="6" value="{{ shipping_info.zip }}" />
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <a class="btn btn-default btn-xs" href="#" data-ajax-handler="shop:on_evalShippingRate" data-ajax-update="#shipping_options=shopestimatedshippingoptions">Calculate</a>
+            <div class="form-group">
+                <a class="btn btn-dark btn-xs" href="#" data-ajax-handler="shop:onEvalShippingRate" data-ajax-update="#shipping_options=shopestimatedshippingoptions">Calculate</a>
 
-                    <div id="shipping_options"></div>
-                </div>
-            </div>                    
-        </div> -->
+                <div id="shipping_options"></div>
+            </div>                   
+        </div>
+        -->
         <!-- // Shipping Estimate -->
 
         <!-- Order Summary -->
-        <div class="col-sm-6 col-sm-offset-6 data-list">
+        <div class="col-sm-5 col-sm-offset-4 data-list">
             <h4 class="breaker">Order Summary</h4>            
 
             <p class="row">
                 <strong class="col-sm-6">Subtotal</strong>
-                <span class="col-sm-6 text-right">{{ cart.getSubtotal()|currency }}</span>
+                <span class="col-sm-6 text-right">{{ totals.subtotal|currency }}</span>
             </p>
 
-            {% if cart.getDiscountTotal() > 0 %}
+            {% if totals.discountTotal > 0 %}
             <p class="row">
                 <strong class="col-sm-6">Discount applied</strong>
-                <span class="col-sm-6 text-right newprice">{{ cart.getDiscountTotal()|currency }}</span>
+                <span class="col-sm-6 text-right newprice">{{ totals.discountTotal|currency }}</span>
+            </p>
+            {% endif %}
+
+            {% if totals.totalShippingQuote > 0 %}
+            <p class="row">
+                <strong class="col-sm-6">Shipping</strong>
+                <span class="col-sm-6 text-right newprice">{{ totals.totalShippingQuote|currency }}</span>
             </p>
             {% endif %}
 
             <p class="row CART__total">
                 <strong class="col-sm-6">Estimated total</strong>
-                <span class="col-sm-6 text-right text-pop">{{ cart.getTotal()|currency }}</span>
+                <span class="col-sm-6 text-right text-pop">{{ totals.total|currency }}</span>
             </p>
 
         </div>
