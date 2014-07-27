@@ -12,7 +12,7 @@
                 <td>
                     <div class="radio">
                         <label for="{{ 'option'~index }}">
-                            <input name="shippingMethod" {{ option.error_hint ? 'disabled' : null }} value="{{ index }}" {{ radio_state(option.shippingMethodId, shippingMethod) }} type="radio" id="{{ 'option'~index }}" />
+                            <input name="shippingMethod" {{ option.error_hint ? 'disabled' : null }} value="{{ index }}" {{ radio_state(shippingMethodInfo.id, option.id) }} type="radio" id="{{ 'option'~index }}" />
                             <span class="choice-title">
                                 {{ option.shippingMethodName }}
                                 {% if option.shippingServiceName %}: {{ option.shippingServiceName }}{% endif %}
