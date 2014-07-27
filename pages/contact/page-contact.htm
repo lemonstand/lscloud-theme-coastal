@@ -46,29 +46,29 @@ url: /contact
 
         <div class="mb1">
             <h4>Mailing Address</h4>
-            <p>
-                Customer Service / ECommerce<br />
-                0000 Madeup Street<br />
-                Vancouver, BC<br />
-                000 000<br />
-                Canada
-            </p>
-            <p>
-                <strong>E-mail:</strong> comments@email.com<br />
-                <strong>Toll FREE:</strong> 1-800-000-0000
-            </p>
+            <div class="address" itemscope itemtype="http://schema.org/Organization">
+                <span itemprop="name">Company Name</span><br />
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <span itemprop="streetAddress">0000 Madeup Street</span><br />
+                    <span itemprop="addressLocality">Vancouver</span>, <span itemprop="addressRegion">BC</span> <span itemprop="postalCode">000 000</span><br />
+                    <span itemprop="addressCountry">Canada</span>
+                </div><br />
+                
+                <strong>Email:</strong> <span itemprop="email">comments@email.com</span><br />
+                <strong>Phone:</strong> <span itemprop="telephone">1-800-000-0000</span>
+            </div>
         </div>
 
         <div class="mb1">
             <h4>Opening hours</h4>
             <ul class="list-unstyled">
-                <li>Monday: 9 AM - 11 PM</li>
-                <li>Tuesday: 9 AM - 11 PM</li>
-                <li>Wednesday: 9 AM - 11 PM</li>
-                <li>Thursday: 9 AM - 12 AM</li>
-                <li>Friday: 9 AM - 12 AM</li>
-                <li>Saturday: 9 AM - 7 PM</li>
-                <li>Sunday: 9 AM - 7 PM</li>
+                <li itemprop="openingHours" content="Mo 9:00-23:00">Mon: 9 AM - 11 PM</li>
+                <li itemprop="openingHours" content="Tu 9:00-23:00">Tue: 9 AM - 11 PM</li>
+                <li itemprop="openingHours" content="We 9:00-23:00">Wed: 9 AM - 11 PM</li>
+                <li itemprop="openingHours" content="Th 9:00-23:00">Thu: 9 AM - 11 PM</li>
+                <li itemprop="openingHours" content="Fr 9:00-23:00">Fri: 9 AM - 11 PM</li>
+                <li itemprop="openingHours" content="Sa 9:00-22:00">Sat: 9 AM - 10 PM</li>
+                <li itemprop="openingHours" content="Su 9:00-20:00">Sun: 9 AM - 8 PM</li>
             </ul>
         </div>
     </aside>
