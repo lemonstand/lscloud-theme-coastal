@@ -13,22 +13,37 @@
         {% else %}
 
         <div class="col-sm-12">
-            <h4>Choose a payment method.</h4>
 
-            <!-- The payment method radio button clicks are handled in the main.js -->
-            {{ open_form({'class': 'custom', 'id': 'payment_method'}) }} 
-            {% for method in paymentMethods %}
-                {% for method in paymentMethods %}
-                <div class="radio">
-                    <label for="payment-method{{ method.id }}">
-                        <input class="custom-radio" name="paymentMethodId" value="{{ method.id }}" type="radio" id="payment-method{{ method.id }}" /> {{ method.name }}
-                    </label>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Choose a payment method.</h3>
+                </div>                
+
+                <div class="panel-body row">
+                    <div class="col-sm-3">
+
+                        <!-- The payment method radio button clicks are handled in the main.js -->
+                        {{ open_form({'class': 'custom mb1', 'id': 'payment_method'}) }} 
+                        {% for method in paymentMethods %}
+                            {% for method in paymentMethods %}
+
+                            <label class="radio-inline" for="payment-method{{ method.id }}">
+                                <input class="custom-radio" name="paymentMethodId" value="{{ method.id }}" type="radio" id="payment-method{{ method.id }}" />
+                                <span class="choice-title">
+                                    {{ method.name }}
+                                </span>
+                            </label>
+
+                            {% endfor %}
+                        {% endfor %}
+                        </form>
+
+                    </div>
+
+                    <div class="col-sm-9" id="payment_form">{{ partial('shop-paymentform') }}</div>
+
                 </div>
-                {% endfor %}
-            {% endfor %}
-            </form>
-
-            <div id="payment_form">{{ partial('shop-paymentform') }}</div>
+            </div>
 
         </div>
     

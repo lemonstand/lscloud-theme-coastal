@@ -5,8 +5,8 @@
   {% set message = payment_method.pay_offline_message() %}
   {% if message %}
     <p>{{ message }}</p>
+  	<p><a class="btn btn-dark" href="{{ site_url('shop') }}">Continue shopping</a></p>
   {% else %}
-    <p>This payment method has no payment form.</p>    
+    <!-- <p>This payment method has no payment form.</p>  -->   
   {% endif %}
-  <p><a class="btn btn-dark" href="{{ site_url('shop') }}">Continue shopping</a></p>
 {% endif %}
