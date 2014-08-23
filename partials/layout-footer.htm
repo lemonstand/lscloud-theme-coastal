@@ -6,15 +6,23 @@
 
         <div class="row buffer-bottom">
             <div class="col-xs-12 col-sm-8 mb1--xs">
-                <h5 class="text-caps">Coastal Newsletter</h5>
+                <h5 class="text-caps">{% if theme.logoText %}{{ theme.logoText }} {% endif %}Newsletter</h5>
                 <input type="text" class="form-control input-sm" size="20" placeholder="Enter your email" />
             </div>
             <div class="col-xs-12 col-sm-4 text-right--sm">
                 <ul class="list-inline">
-                    <li><a href="#"><i class="fa fa-2x fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
-                    <li><a href="#"><i class="fa fa-2x fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
-                    <li><a href="#"><i class="fa fa-2x fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
-                    <li><a href="#"><i class="fa fa-2x fa-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
+                    {% if theme.socialFacebookUrl %} 
+                    <li><a href="{{ theme.socialFacebookUrl }}"><i class="fa fa-2x fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
+                    {% endif %}
+                    {% if theme.socialTwitterUrl %} 
+                    <li><a href="{{ theme.socialTwitterUrl }}"><i class="fa fa-2x fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
+                    {% endif %}
+                    {% if theme.socialInstagramUrl %} 
+                    <li><a href="{{ theme.socialInstagramUrl }}"><i class="fa fa-2x fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
+                    {% endif %}
+                    {% if theme.socialPinterestUrl %} 
+                    <li><a href="{{ theme.socialPinterestUrl }}"><i class="fa fa-2x fa-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
+                    {% endif %}                    
                 </ul>
             </div>
         </div>
@@ -52,8 +60,10 @@
                 </ul>
             </div>
 
-            <div class="col-sm-4 col-sm-offset-4 text-right--sm">
-                <h5>This is the free Coastal theme.</h5>
+            <div class="col-sm-4 col-sm-offset-2 text-right--sm">
+                {% if theme.footerTagline %}
+                <h5>{{ theme.footerTagline }}</h5>
+                {% endif %}
                 <p>Powered by <a href="https://lemonstand.com">LemonStand</a></p>
                 <ul class="list-inline">
                     <li><a href="#">Privacy</a></li>

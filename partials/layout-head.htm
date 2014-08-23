@@ -7,11 +7,24 @@
 <meta name="Description" content="{{ page.description }}"/>
 <meta name="Keywords" content="{{ page.keywords }}"/>
 
-<title>{{ page.title }}</title>
+<title>{% if theme.logoText %}{{ theme.logoText }} &middot; {% endif %}{{ page.title }}</title>
 
 <link rel="stylesheet" type="text/css" href="/cms/core.css">
 <link rel="stylesheet" type="text/css" href="{{ 'styles/main.css'|theme_resource }}">
 <link rel="stylesheet" type="text/css" href="{{ 'styles/custom.css'|theme_resource }}">
+
+<style>
+{% if theme.topbarColor %}
+.siteheader {
+    background: {{ theme.topbarColor }};
+}
+{% endif %}
+{% if theme.footerColor %}
+.sitefooter {
+    background: {{ theme.footerColor }};
+}
+{% endif %}
+</style>
 
 <script type="text/javascript" src="{{ 'scripts/vendor/modernizr.js'|theme_resource }}"></script>
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
