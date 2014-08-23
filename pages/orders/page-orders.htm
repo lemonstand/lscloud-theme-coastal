@@ -6,7 +6,6 @@ published: true
 name: Orders
 url: /orders
 ---
-
 <div class="container buffer-bottom">
     <div class="row">
 
@@ -33,7 +32,7 @@ url: /orders
                     {% for order in orders %}
                     {% set url = root_url('/order/'~order.id) %}
                         <tr>
-                            <td><a href="{{ url }}">{{ order.id }}</a></a></td>
+                            <td><a href="{{ url }}">{{ order.number }}</a></a></td>
                             <td><a href="{{ url }}">{{ order.created_at.format('M jS, Y') }}</a></td>
                             <td><a href="{{ url }}">{{ order.orderStatus.name }}</a></td>
                             <td><a href="{{ url }}"><i>{{ order.total|currency }}</i></a></td>

@@ -1,6 +1,7 @@
 ---
 action: 'shop:order'
 template: shop
+protocol: all
 published: true
 name: Order
 url: '/order/:orderId'
@@ -16,7 +17,7 @@ url: '/order/:orderId'
                 <div class="col-sm-4">
                     <h4 class="breaker">Order Details</h4>
                     <ul class="list-simple small">
-                        <li><strong>Order number:</strong> #{{ order.id }}</li>
+                        <li><strong>Order number:</strong> #{{ order.number }}</li>
                         {% if order.invoices[0].payments().last().guessPaymentMethod() %}
                         <li><strong>Payment method:</strong> {{ order.invoices[0].payments().last().guessPaymentMethod().name }}</li>
                         {% endif %}

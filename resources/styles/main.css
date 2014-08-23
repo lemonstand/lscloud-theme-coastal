@@ -5966,3 +5966,7 @@ Cart Page
 .CART__total {
   border-top: 1px dotted #999999;
   padding-top: 10px; }
+
+@media (max-width: 767px) {
+  .order-summary .row {
+    text-align: right; } }
