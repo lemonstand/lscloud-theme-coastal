@@ -1,0 +1,37 @@
+{% set items_per_page = post('items_per_page')|default(12) %}
+{% paginate products by items_per_page %}
+ <div class="row">
+	{% for product in pagination.items %}
+	<div class="col-xs-6 col-sm-6 col-md-3 {{ is_on_sale ? 'sale' : null }}">
+        <div class="item">
+            <figure class="item__img">
+                <a href="{{ page_url }}">
+                    <img src="{{ product.images.first.thumbnail(365, 365)|default('http://placehold.it/365x365') }}" alt="{{ product.images.first.description }}" title="{{ product.images.first.title }}" />
+                </a>
+            </figure>
+
+            <div class="item__content">
+                <h5 class="item__name"><a href="{{ page_url }}">{{ product.name }}</a></h5>
+                <p class="item__pricing">
+                    <a href="{{ page_url }}">
+                        {% if is_on_sale %}
+                        <span class="price oldprice">{{ product.fullPrice|currency }}</span>
+                        <span class="price newprice">{{ product.price|currency }}</span>
+                        {% else %}
+                        <span class="price">{{ product.price|currency }}</span>
+                        {% endif %}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+	{% else %}
+	<div class="col-xs-12">
+		<h2 class="empty">Sorry, there are no products matching your request.</h2>
+	</div>
+	{% endfor %}
+</div>
+<div class="pagination-holder">
+	{% navigation %}
+</div>
+{% endpaginate %}

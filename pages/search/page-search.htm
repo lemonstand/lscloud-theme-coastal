@@ -1,22 +1,21 @@
 ---
 action: 'shop:search'
-template: inner
+template: shop
 protocol: all
 published: true
 name: Search
-url: /search?
+url: '/search/:page?'
 ---
-
+{% set numProds = products.get().count() %}
+<!-- {% set searchQuery = app.request.get('query') %} -->
 <div class="container buffer-bottom CATEGORY">
-    <div class="row">
-        <div class="col-sm-12">
-            <p>Products found: {{ products.get().count() }}</p>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {{ numProds }} product{{ numProds == 1 ? null : 's' }} found<!--  for "{{ searchQuery }}" -->
         </div>
-    </div>
+    </div> 
     
     <div class="row product-list">
-        {{ partial('shop-product-list', {
-            'products': products}) 
-        }}
+        {{ partial('shop-product-loop', { 'product': product, 'products': products, 'pagination': pagination}) }}
     </div>
 </div>
