@@ -30,7 +30,7 @@ description: 'Payment form partial for Test Payment payment method'
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="ACCT">Credit Card Number</label>
                 <div class="col-sm-9">
-                    <input autocomplete="off" name="ACCT" value="4111111111111111" id="ACCT" type="text" class="form-control" size="14" />
+                    <input autocomplete="off" name="ACCT" value="4111111111111111" id="ACCT" type="text" class="form-control" size="34" />
                 </div>
             </div>
 
@@ -39,11 +39,36 @@ description: 'Payment form partial for Test Payment payment method'
                 <div class="col-sm-9 form-inline">
                     <div class="form-group">
                         <label class="control-label sr-only" for="EXPDATE_MONTH">Month</label>
-                        <input type="text" name="EXPDATE_MONTH" class="form-control" size="2" placeholder="MM" />
+                        <select class="form-control" name="EXPDATE_MONTH" id="EXPDATE_MONTH">
+                            <option value="01">Jan (01)</option>
+                            <option value="02">Feb (02)</option>
+                            <option value="03">Mar (03)</option>
+                            <option value="04">Apr (04)</option>
+                            <option value="05">May (05)</option>
+                            <option value="06">June (06)</option>
+                            <option value="07">July (07)</option>
+                            <option value="08">Aug (08)</option>
+                            <option value="09">Sep (09)</option>
+                            <option value="10">Oct (10)</option>1
+                            <option value="11">Nov (11)</option>
+                            <option value="12">Dec (12)</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label class="control-label sr-only" for="EXPDATE_YEAR">Year</label>
-                        <input type="text" name="EXPDATE_YEAR" class="form-control" size="2" placeholder="YY" />
+                        <select class="form-control" name="EXPDATE_YEAR" id="EXPDATE_YEAR">
+                            <option value="14">2014</option>
+                            <option value="15">2015</option>
+                            <option value="16">2016</option>
+                            <option value="17">2017</option>
+                            <option value="18">2018</option>
+                            <option value="19">2019</option>
+                            <option value="20">2020</option>
+                            <option value="21">2021</option>
+                            <option value="22">2022</option>
+                            <option value="23">2023</option>
+                            <option value="24">2024</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -51,7 +76,7 @@ description: 'Payment form partial for Test Payment payment method'
             <div class="form-group">
                 <label class="col-sm-3 control-label" for="CVV2">CVV2</label>
                 <div class="col-sm-5">
-                    <input autocomplete="off" name="CVV2" value="123" id="CVV2" type="text" class="form-control" size="4" />
+                    <input autocomplete="off" name="CVV2" value="123" id="CVV2" type="text" class="form-control" size="2" />
                     <span class="help-block small">For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card.</span>
                 </div>
             </div>
