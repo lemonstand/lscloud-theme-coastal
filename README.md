@@ -19,6 +19,7 @@ Check out a live version of the [Coastal theme](https://coastal.lemonstand.com/)
 
 #### TODO
 - ~~Add coupon code functionality~~
+- ~~Add theme customization options~~
 - Add more Rich Snippets
 - Add plugin for nicer dropdowns (ie. Chosen)
 - Make it easier to add custom category images, per category
