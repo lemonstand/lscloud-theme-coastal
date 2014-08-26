@@ -25,9 +25,9 @@ Check out a live version of the [Coastal theme](https://coastal.lemonstand.com/)
 
 #### Images
 
-***
-
 All photos in the theme are free to use under the [Attribution-NoDerivs 2.0 Generic license](https://creativecommons.org/licenses/by-nd/2.0/)
+
+***
 
 #### TODO
 - ~~Add coupon code functionality~~
