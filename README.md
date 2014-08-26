@@ -3,10 +3,9 @@ Coastal
 
 ### [Coastal](https://coastal.lemonstand.com/) is a minimal, responsive theme for [LemonStand](https://lemonstand.com/).
 
-Created by: [Adam Campbell](http://hotmeteor.com) [@hotmeteor](http://twitter.com/hotmeteor)
+Created by: [Adam Campbell](http://hotmeteor.com) ([@hotmeteor](http://twitter.com/hotmeteor))
 
 This work is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License
-
 http://creativecommons.org/licenses/by-nd/4.0/
 
 
@@ -24,10 +23,9 @@ While you can definitely use Coastal as-is, Coastal is meant to be modified. The
 
 Check out a live version of the [Coastal theme](https://coastal.lemonstand.com/).
 
-***
-
-
 #### Images
+
+***
 
 All photos in the theme are free to use under the [Attribution-NoDerivs 2.0 Generic license](https://creativecommons.org/licenses/by-nd/2.0/)
 
