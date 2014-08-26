@@ -13,6 +13,16 @@ http://creativecommons.org/licenses/by-nd/4.0/
 
 While you can definitely use Coastal as-is, Coastal is meant to be modified. The HTML is lean, and the theme is built on the [Bootstrap](http://getbootstrap.com/) framework (v3.2.0), making it easy to change as desired. Also, an optional `custom.css` is referenced in the theme to make adding overriding styles even easier.
 
+### Template features and options
+
+- Mobile-first design, and fully responsive
+- Simple, minimal design - perfect to display products on
+- Modular homepage and promo boxes - stack them in many variations (1-up, 2-up, 3-up)
+- Change the header and footer background colours to any of your choosing
+- Guest and registered user checkout
+- Sharing icons for Twitter, Facebook, and Pinterest lets customers share your products on their favourite social network
+
+***
 
 #### Quick Install
 
