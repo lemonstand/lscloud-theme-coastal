@@ -4,5 +4,5 @@
         <p class="text-caps">Shop New Arrivals</p>
     </div>
 
-    <div class="hero__bg hero__bg--c-t" style="background-image: url(https://farm5.staticflickr.com/4062/4285058542_91d33b015e_b.jpg);"></div>
+    <div class="hero__bg hero__bg--c-t" style="background-image: url({{ category.images.first.thumbnail('auto', 'auto')|default('https://farm5.staticflickr.com/4062/4285058542_91d33b015e_b.jpg') }});background-size:cover;"></div>
 </div>
