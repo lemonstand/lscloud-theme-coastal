@@ -29,7 +29,7 @@ url: /orders
                         </tr>
                     </thead>
                     <tbody>
-                    {% for order in orders %}
+                    {% for order in orders if not order.is_quote %}
                     {% set url = root_url('/order/'~order.id) %}
                         <tr>
                             <td><a href="{{ url }}">{{ order.number }}</a></a></td>

@@ -20,7 +20,7 @@ While you can definitely use Coastal as-is, Coastal is meant to be modified. The
 - Modular homepage and promo boxes - stack them in many variations (1-up, 2-up, 3-up)
 - Change the header and footer background colours to any of your choosing
 - Guest and registered user checkout
-- Sharing icons for Twitter, Facebook, and Pinterest lets customers share your products on their favourite social network
+- Social icons for Twitter, Facebook, and Pinterest
 
 ***
 
@@ -42,6 +42,7 @@ All photos in the theme are free to use under the [Attribution-NoDerivs 2.0 Gene
 #### TODO
 - ~~Add coupon code functionality~~
 - ~~Add theme customization options~~
+- ~~Make it easier to add custom category images, per category~~
 - Add more Rich Snippets
 - Add plugin for nicer dropdowns (ie. Chosen)
-- Make it easier to add custom category images, per category
+
