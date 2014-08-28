@@ -2,76 +2,72 @@
 
 <footer class="container-fluid bg-dark sitefooter">
 
-    <div class="container">
-
-        <div class="row buffer-bottom">
-            <div class="col-xs-12 col-sm-8 mb1--xs">
-                <h5 class="text-caps">{% if theme.logoText %}{{ theme.logoText }} {% endif %}Newsletter</h5>
-                <input type="text" class="form-control input-sm" size="20" placeholder="Enter your email" />
-            </div>
-            <div class="col-xs-12 col-sm-4 text-right--sm">
-                <ul class="list-inline">
-                    {% if theme.socialFacebookUrl %} 
-                    <li><a href="{{ theme.socialFacebookUrl }}"><i class="fa fa-2x fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
-                    {% endif %}
-                    {% if theme.socialTwitterUrl %} 
-                    <li><a href="{{ theme.socialTwitterUrl }}"><i class="fa fa-2x fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
-                    {% endif %}
-                    {% if theme.socialInstagramUrl %} 
-                    <li><a href="{{ theme.socialInstagramUrl }}"><i class="fa fa-2x fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
-                    {% endif %}
-                    {% if theme.socialPinterestUrl %} 
-                    <li><a href="{{ theme.socialPinterestUrl }}"><i class="fa fa-2x fa-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
-                    {% endif %}                    
-                </ul>
-            </div>
+    <div class="row buffer-bottom">
+        <div class="col-xs-12 col-sm-8 mb1--xs">
+            <h5 class="text-caps">{% if theme.logoText %}{{ theme.logoText }} {% endif %}Newsletter</h5>
+            <input type="text" class="form-control input-sm" size="20" placeholder="Enter your email" />
         </div>
-
-        <div class="row buffer-bottom">
-
-            <div class="col-sm-2">
-                <h5 class="text-caps">Shop</h5>
-                {% tree categories %}
-                <ul class="list-simple">
-                    {% for category in tree.items %}
-                    <li><a href="/category/{{ category.url_name }}">{{ category.name }}</a></li>
-                    {% endfor %}
-                    <li><a class="text-bright" href="/sale/">Sale</a></li>
-                </ul>
-                {% endtree %}
-            </div>
-
-            <div class="col-sm-2">
-                <h5 class="text-caps">Customer Service</h5>
-                <ul class="list-simple">
-                    <li><a href="{{ site_url('orders') }}">Order History</a></li>
-                    <li><a href="{{ site_url('profile') }}">Account</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="{{ site_url('contact') }}">Contact</a>
-                </ul>
-            </div>
-
-            <div class="col-sm-2 mb1--xs">
-                <h5 class="text-caps">Coastal</h5>
-                <ul class="list-simple">
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="{{ site_url('about') }}">About</a></li>
-                </ul>
-            </div>
-
-            <div class="col-sm-4 col-sm-offset-2 text-right--sm">
-                {% if theme.footerTagline %}
-                <h5>{{ theme.footerTagline }}</h5>
+        <div class="col-xs-12 col-sm-4 text-right--sm">
+            <ul class="list-inline">
+                {% if theme.socialFacebookUrl %} 
+                <li><a href="{{ theme.socialFacebookUrl }}"><i class="fa fa-2x fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
                 {% endif %}
-                <p>Powered by <a href="https://lemonstand.com">LemonStand</a></p>
-                <ul class="list-inline">
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
+                {% if theme.socialTwitterUrl %} 
+                <li><a href="{{ theme.socialTwitterUrl }}"><i class="fa fa-2x fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
+                {% endif %}
+                {% if theme.socialInstagramUrl %} 
+                <li><a href="{{ theme.socialInstagramUrl }}"><i class="fa fa-2x fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
+                {% endif %}
+                {% if theme.socialPinterestUrl %} 
+                <li><a href="{{ theme.socialPinterestUrl }}"><i class="fa fa-2x fa-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
+                {% endif %}                    
+            </ul>
+        </div>
+    </div>
+
+    <div class="row buffer-bottom">
+
+        <div class="col-sm-2">
+            <h5 class="text-caps">Shop</h5>
+            {% tree categories %}
+            <ul class="list-simple">
+                {% for category in tree.items %}
+                <li><a href="/category/{{ category.url_name }}">{{ category.name }}</a></li>
+                {% endfor %}
+                <li><a class="text-bright" href="/sale/">Sale</a></li>
+            </ul>
+            {% endtree %}
         </div>
 
+        <div class="col-sm-2">
+            <h5 class="text-caps">Customer Service</h5>
+            <ul class="list-simple">
+                <li><a href="{{ site_url('orders') }}">Order History</a></li>
+                <li><a href="{{ site_url('profile') }}">Account</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="{{ site_url('contact') }}">Contact</a>
+            </ul>
+        </div>
+
+        <div class="col-sm-2 mb1--xs">
+            <h5 class="text-caps">Coastal</h5>
+            <ul class="list-simple">
+                <li><a href="#">Blog</a></li>
+                <li><a href="{{ site_url('about') }}">About</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-2 text-right--sm">
+            {% if theme.footerTagline %}
+            <h5>{{ theme.footerTagline }}</h5>
+            {% endif %}
+            <p>Powered by <a href="https://lemonstand.com">LemonStand</a></p>
+            <ul class="list-inline">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
     </div>
 
 </footer>

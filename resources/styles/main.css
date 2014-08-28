@@ -5646,6 +5646,11 @@ Site Footer
     color: rgba(255, 255, 255, 0.85); }
     .sitefooter a:hover {
       color: #fff; }
+  @media (min-width: 768px) {
+    .sitefooter .row {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1170px; } }
 
 /*
 ------------------------------
