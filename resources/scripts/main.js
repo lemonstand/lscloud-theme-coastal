@@ -7,6 +7,7 @@ $(document).ready(function() {
             var target = $el.closest(".js-thumblist").data("target");
             var $target = $(target);
             var src = $el.attr("href");
+            $el.parent().addClass("selected").siblings().removeClass("selected");
             $target.attr("src", src);
         });
     })(jQuery);
