@@ -68,10 +68,7 @@
         <div class="col-sm-5 col-sm-offset-4 data-list order-summary">
             <h4 class="breaker">Order Summary</h4>            
 
-            <p class="row">
-                <strong class="col-sm-6">Subtotal</strong>
-                <span class="col-sm-6 text-right">{{ totals.subtotal|currency }}</span>
-            </p>
+            
 
             {% if totals.discountTotal > 0 %}
             <p class="row">
@@ -86,6 +83,10 @@
                 <span class="col-sm-6 text-right newprice">{{ totals.totalShippingQuote|currency }}</span>
             </p>
             {% endif %}
+            <p class="row">
+                <strong class="col-sm-6">Subtotal</strong>
+                <span class="col-sm-6 text-right">{{ totals.subtotal|currency }}</span>
+            </p>
 
             <p class="row CART__total">
                 <strong class="col-sm-6">Estimated total</strong>

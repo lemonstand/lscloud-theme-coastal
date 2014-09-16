@@ -2315,7 +2315,7 @@ input[type="month"] {
 
 .radio-inline,
 .checkbox-inline {
-  display: inline-block;
+  display: block;
   padding-left: 20px;
   margin-bottom: 0;
   vertical-align: middle;
@@ -2325,7 +2325,7 @@ input[type="month"] {
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 10px; }
+  margin-left: 0px; }
 
 input[type="radio"][disabled], fieldset[disabled] input[type="radio"],
 input[type="checkbox"][disabled], fieldset[disabled]

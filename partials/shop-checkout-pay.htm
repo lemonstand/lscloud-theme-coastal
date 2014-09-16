@@ -4,15 +4,18 @@
             {{ partial('shop-cart-items') }}
         </div>
     </div>
-
-    <div class="row">
+    
+    <div class="col-md-4 pull-right">
+        {{ partial('shop-checkout-totals') }}
+    </div>
+    <div class="col-md-8">
         {% if order.payment_processed %}
         <div class="col-sm-6">
             <p class="flash info"><strong>Thank you!</strong> The payment is already processed for this order.</p>
         </div>
         {% else %}
 
-        <div class="col-sm-12">
+        <div>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -25,7 +28,6 @@
                         <!-- The payment method radio button clicks are handled in the main.js -->
                         {{ open_form({'class': 'custom mb1', 'id': 'payment_method'}) }} 
                         {% for method in paymentMethods %}
-                            {% for method in paymentMethods %}
 
                             <label class="radio-inline" for="payment-method{{ method.id }}">
                                 <input class="custom-radio" name="paymentMethodId" value="{{ method.id }}" type="radio" id="payment-method{{ method.id }}" />
@@ -33,8 +35,6 @@
                                     {{ method.name }}
                                 </span>
                             </label>
-
-                            {% endfor %}
                         {% endfor %}
                         </form>
 

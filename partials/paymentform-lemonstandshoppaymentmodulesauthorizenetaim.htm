@@ -1,0 +1,66 @@
+---
+description: 'Payment form partial for Authorize.Net AIM payment method'
+---
+<form method="post" action="" data-ajax-handler="shop:onPay" class="form-horizontal">
+    <input type="hidden" value="{{ paymentMethod.id}}" name="payment_method_id">
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Cardholder Name</label>
+        <div class="col-sm-9 form-inline">
+            <div class="form-group">
+                <label class="control-label sr-only" for="FIRSTNAME">First Name</label>
+                <input autocomplete="off" name="cardholderName" id="firstName" type="text" class="form-control" size="12" placeholder="First Name" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label sr-only" for="LASTNAME">Last Name</label>
+                <input autocomplete="off" name="lastName" id="LASTNAME" type="text" class="form-control" size="12" placeholder="Last Name" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="ACCT">Credit Card Number</label>
+        <div class="col-sm-9">
+            <input autocomplete="off" name="cardNumber" id="ACCT" type="text" class="form-control" size="34" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Expiration Date</label>
+        <div class="col-sm-9 form-inline">
+            <div class="form-group">
+                <label class="control-label sr-only" for="EXPDATE_MONTH">Month</label>
+                <select name="expiryMonth" id="EXPDATE_MONTH">
+                    {% for i in 1..12 %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label sr-only" for="EXPDATE_YEAR">Year</label>
+                <select autocomplete="off" name="expiryYear" id="EXPDATE_YEAR">
+                    {% for i in 2014..2034 %}
+                    <option value="{{ i|slice(2, 2) }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label" for="CVV2">CVV2</label>
+        <div class="col-sm-5">
+            <input autocomplete="off" name="securityCode" value="123" id="CVV2" type="text" class="form-control" size="2" />
+            <span class="help-block small">For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card.</span>
+        </div>
+    </div>
+
+    
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-3">
+            <input type="submit" value="Submit Payment" class="btn btn-primary">
+        </div>
+    </div>
+</form>
