@@ -1,11 +1,11 @@
 ---
-name: Coastal
+name: Coastal-dpark
 author: 'Adam Campbell (@hotmeteor)'
 website: 'http://hotmeteor.com'
 engine: twig
 404: '404'
 customFields:
-    logoText: { type: text, title: 'Logo text', default: 'COASTAL', comment: 'Replaces all instance of your logo name around the site' }
+    logoText: { type: text, title: 'Logo text', default: COASTAL, comment: 'Replaces all instance of your logo name around the site' }
     socialFacebookUrl: { type: text, title: 'Facebook URL', default: 'http://facebook.com/lemonstand' }
     socialTwitterUrl: { type: text, title: 'Twitter URL', default: 'http://twitter.com/hotmeteor' }
     socialInstagramUrl: { type: text, title: 'Instagram URL', default: 'http://instagram.com' }

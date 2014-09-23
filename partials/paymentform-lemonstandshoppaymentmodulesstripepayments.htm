@@ -1,25 +1,20 @@
 ---
-description: 'Payment form partial for Test Payment payment method'
+description: 'Payment form partial for Stripe Payments payment method'
 ---
-
-<div class="col-sm-offset-3 mb1">
-    <p class="flash warning">This is a test payment method. Never use your real credit card information in this form.</p>
-</div>
-
 <form method="post" action="" data-ajax-handler="shop:onPay" class="form-horizontal">
-    <input type="hidden" name="payment_method_id" value="{{ paymentMethod.id}}">
-
+    <input type="hidden" value="{{ paymentMethod.id}}" name="payment_method_id">
+    
     <div class="form-group">
         <label class="col-sm-3 control-label">Cardholder Name</label>
         <div class="col-sm-9 form-inline">
             <div class="form-group">
                 <label class="control-label sr-only" for="FIRSTNAME">First Name</label>
-                <input autocomplete="off" name="FIRSTNAME" value="John" id="FIRSTNAME" type="text" class="form-control" size="12" placeholder="First Name" />
+                <input autocomplete="off" name="firstName" id="firstName" type="text" class="form-control" size="12" placeholder="First Name" />
             </div>
 
             <div class="form-group">
                 <label class="control-label sr-only" for="LASTNAME">Last Name</label>
-                <input autocomplete="off" name="LASTNAME" value="Smith" id="LASTNAME" type="text" class="form-control" size="12" placeholder="Last Name" />
+                <input autocomplete="off" name="lastName" id="LASTNAME" type="text" class="form-control" size="12" placeholder="Last Name" />
             </div>
         </div>
     </div>
@@ -27,7 +22,7 @@ description: 'Payment form partial for Test Payment payment method'
     <div class="form-group">
         <label class="col-sm-3 control-label" for="ACCT">Credit Card Number</label>
         <div class="col-sm-9">
-            <input autocomplete="off" name="ACCT" value="4111111111111111" id="ACCT" type="text" class="form-control" size="34" />
+            <input autocomplete="off" name="cardNumber" id="ACCT" type="text" class="form-control" size="34" />
         </div>
     </div>
 
@@ -36,7 +31,7 @@ description: 'Payment form partial for Test Payment payment method'
         <div class="col-sm-9 form-inline">
             <div class="form-group">
                 <label class="control-label sr-only" for="EXPDATE_MONTH">Month</label>
-                <select class="form-control" name="EXPDATE_MONTH" id="EXPDATE_MONTH">
+                <select class="form-control" name="expiryMonth" id="EXPDATE_MONTH">
                     <option value="01">Jan (01)</option>
                     <option value="02">Feb (02)</option>
                     <option value="03">Mar (03)</option>
@@ -53,7 +48,7 @@ description: 'Payment form partial for Test Payment payment method'
             </div>
             <div class="form-group">
                 <label class="control-label sr-only" for="EXPDATE_YEAR">Year</label>
-                <select class="form-control" name="EXPDATE_YEAR" id="EXPDATE_YEAR">
+                <select class="form-control" name="expiryYear" id="EXPDATE_YEAR">
                     <option value="14">2014</option>
                     <option value="15">2015</option>
                     <option value="16">2016</option>
@@ -73,11 +68,12 @@ description: 'Payment form partial for Test Payment payment method'
     <div class="form-group">
         <label class="col-sm-3 control-label" for="CVV2">CVV2</label>
         <div class="col-sm-5">
-            <input autocomplete="off" name="CVV2" value="123" id="CVV2" type="text" class="form-control" size="2" />
+            <input autocomplete="off" name="securityCode" value="123" id="CVV2" type="text" class="form-control" size="2" />
             <span class="help-block small">For MasterCard, Visa, and Discover, the CSC is the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card.</span>
         </div>
     </div>
 
+    
     <div class="form-group">
         <div class="col-sm-9 col-sm-offset-3">
             <input type="submit" value="Submit Payment" class="btn btn-primary">
