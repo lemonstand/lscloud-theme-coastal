@@ -5865,7 +5865,8 @@ Products
     display: block;
     margin-bottom: 15px; }
     .item__img a {
-      display: block; }
+      display: block;
+      max-height:220px; }
     .item__img img {
       display: inline-block;
       height: auto;
