@@ -35,15 +35,30 @@ $(document).ready(function() {
 
     (function($) {
 
-        // var $source = $("#billing-info");
-        // var $sourceInput = $source.find(":input:not([type=hidden])");
+        var $source = $("#billing-info");
+        var $sourceInput = $source.find(":input:not([type=hidden])");
+        var $target = $("#shipping-info");
+        var $targetInput = $target.find(":input:not([type=hidden])");
+
+        var $chk = $(document).find('.js-mirrordata');
 
         var _regex = /\[(.*?)\]/;
         var _ev = "keyup blur change";
 
-        $(document).on(_ev, '#billing-info :input:not([type=hidden])', function(ev) {
+        // Update vars.
+        $(window).on('onAfterAjaxUpdate', function(){
+            $source = $("#billing-info");
+            $sourceInput = $source.find(":input:not([type=hidden])");
+            $target = $("#shipping-info");
+            $targetInput = $target.find(":input:not([type=hidden])");
 
-            var $chk = $(document).find('.js-mirrordata');
+            $targetInput.prop('disabled', $chk.is(':checked'));
+        });
+
+        // Update on typing.
+        $(document).on(_ev, $sourceInput, function(ev) {
+
+            $chk = $(document).find('.js-mirrordata');
 
             if (!$chk.is(':checked')) {
                 return;
@@ -51,9 +66,15 @@ $(document).ready(function() {
 
             mirrorField.apply(ev.target);
 
-            // mirrorAll();
             return false;
         });
+
+        $(document).on('change', $chk, function() {
+            $targetInput.prop('disabled', $chk.is(':checked'));
+        });
+
+        $targetInput.prop('disabled', $chk.is(':checked'));
+
 
         function mirrorField() {
 
@@ -64,8 +85,9 @@ $(document).ready(function() {
             var $el = $(this);
             var mirrorVal = $el.val();
             var nameMatch = $el.attr("name").match(_regex);
-            var $target = $("#shipping-info");
-            var $targetInput = $target.find(":input:not([type=hidden])");
+
+            // $target = $("#shipping-info");
+            // $targetInput = $target.find(":input:not([type=hidden])");
 
             if (!nameMatch) {
                 return;
