@@ -9,7 +9,7 @@ url: /profile
 
 <div class="container buffer-bottom">
     <div class="row">
-    
+
     {% if customer %}
 
         {{ partial('account-sidenav') }}
@@ -21,8 +21,8 @@ url: /profile
        <!--  <section class="col-sm-4" id="profile-changepassword">
             {{ partial('shop-changepassword') }}
         </section> -->
-        
-    {% else %} 
+
+    {% else %}
 
         <div class="col-sm-12">
             <p>Please <a href="{{ root_url('login') }}">login</a> to edit your profile.</p>

@@ -5884,10 +5884,12 @@ Products
     font-style: normal; }
   @media (min-width: 768px) {
     .item {
-      height: 310px;
+      height: 460px;
       margin-bottom: 0; }
-      .item__img {
-        max-height: 220px; } }
+      .item__img,
+      .item__img a {
+        max-height: none; 
+	} }
 
 /*
 ------------------------------

@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function() {
     (function($) {
         "use strict";
@@ -30,48 +32,83 @@ $(document).ready(function() {
     $("#modal-minicart").on("mouseleave", ".modal-dialog", function() {
         $("#modal-minicart").modal("hide");
     });
+
     (function($) {
+
         var $source = $("#billing-info");
         var $sourceInput = $source.find(":input:not([type=hidden])");
         var $target = $("#shipping-info");
         var $targetInput = $target.find(":input:not([type=hidden])");
+
+        var $chk = $(document).find('.js-mirrordata');
+
         var _regex = /\[(.*?)\]/;
-        var _ev = "keyup keypress blur change";
-        $(document).on("click.address update:address", ".js-mirrordata", function() {
-            if ($(this).is(":checked")) {
-                mirrorAll();
-                $sourceInput.on(_ev, mirrorField);
-            } else {
-                $sourceInput.off(_ev, mirrorField);
-            }
+        var _ev = "keyup blur change";
+
+        // Update vars.
+        $(window).on('onAfterAjaxUpdate', function(){
+            $source = $("#billing-info");
+            $sourceInput = $source.find(":input:not([type=hidden])");
+            $target = $("#shipping-info");
+            $targetInput = $target.find(":input:not([type=hidden])");
+
+            $targetInput.prop('disabled', $chk.is(':checked'));
         });
-        $(".js-mirrordata").trigger("update:address");
-        function mirrorAll() {
-            $sourceInput.each(function() {
-                mirrorField.apply(this);
-            });
-        }
+
+        // Update on typing.
+        $(document).on(_ev, $sourceInput, function(ev) {
+
+            $chk = $(document).find('.js-mirrordata');
+
+            if (!$chk.is(':checked')) {
+                return;
+            }
+
+            mirrorField.apply(ev.target);
+
+            return false;
+        });
+
+        $(document).on('change', $chk, function() {
+            $targetInput.prop('disabled', $chk.is(':checked'));
+        });
+
+        $targetInput.prop('disabled', $chk.is(':checked'));
+
+
         function mirrorField() {
+
             if (!$(this).attr("name")) {
                 return;
             }
+
             var $el = $(this);
             var mirrorVal = $el.val();
             var nameMatch = $el.attr("name").match(_regex);
+
+            // $target = $("#shipping-info");
+            // $targetInput = $target.find(":input:not([type=hidden])");
+
             if (!nameMatch) {
                 return;
             }
+
             nameMatch = nameMatch[1];
+
             var re = new RegExp(nameMatch, "g");
             var $targetEl = $targetInput.filter(function() {
                 return this.name.match(re);
             });
+
             $targetEl.val(mirrorVal);
+
             if ($el[0].id === "billing_country") {
                 $targetEl.trigger("change");
             }
         }
+
     })(jQuery);
+
     $("#cart-content").on("keydown", "input#coupon", function(ev) {
         if (ev.which === 13) {
             $(this).sendRequest("shop:cart", {
