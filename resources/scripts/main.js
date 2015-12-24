@@ -1,5 +1,9 @@
 'use strict';
 
+$(window).on('onAjaxAfterUpdate', function() {
+  $('html, body').animate({ scrollTop: 0 }, 0);
+});
+
 $(document).ready(function() {
     (function($) {
         "use strict";
