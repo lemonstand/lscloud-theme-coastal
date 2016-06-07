@@ -1,8 +1,9 @@
 {% set items_per_page = post('items_per_page')|default(12) %}
 {% paginate products by items_per_page %}
  <div class="row">
-	{% for product in pagination.items %}
-	<div class="col-xs-6 col-sm-6 col-md-3 {{ is_on_sale ? 'sale' : null }}">
+    {% for product in pagination.items %}
+    {% set page_url = '/product/' ~ product.url_name %}
+    <div class="col-xs-6 col-sm-6 col-md-3 {{ is_on_sale ? 'sale' : null }}">
         <div class="item">
             <figure class="item__img">
                 <a href="{{ page_url }}">
@@ -25,13 +26,13 @@
             </div>
         </div>
     </div>
-	{% else %}
-	<div class="col-xs-12">
-		<h2 class="empty">Sorry, there are no products matching your request.</h2>
-	</div>
-	{% endfor %}
+    {% else %}
+    <div class="col-xs-12">
+        <h2 class="empty">Sorry, there are no products matching your request.</h2>
+    </div>
+    {% endfor %}
 </div>
 <div class="pagination-holder">
-	{% navigation %}
+    {% navigation %}
 </div>
 {% endpaginate %}
