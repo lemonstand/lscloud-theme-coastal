@@ -56,7 +56,7 @@ url: /login
             {{ open_form({'data-ajax-handler': 'shop:onSignup', 'data-validation-message' : '', 'class' : 'form-horizontal' }) }}
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">Your Name</label>
+                    <label class="col-sm-3 control-label">Your Name *</label>
                     <div class="col-sm-9 form-inline">
                         <div class="form-group">
                             <label for="signup[first_name]" class="control-label sr-only">First Name</label>
@@ -73,7 +73,7 @@ url: /login
                 </div>
 
                 <div class="form-group">
-                    <label for="signup[email]" class="col-sm-3 control-label">Email</label>
+                    <label for="signup[email]" class="col-sm-3 control-label">Email *</label>
                     <div class="col-sm-9">
                         <input type="email" class="form-control input-sm" id="signup[email]" name="signup[email]" value="{{ post('signup[email]') }}" size="40" />
                         <span class="error small text-danger"></span>
@@ -81,7 +81,7 @@ url: /login
                 </div>
 
                 <div class="form-group">
-                    <label for="signup[password]" class="col-sm-3 control-label">Password</label>
+                    <label for="signup[password]" class="col-sm-3 control-label">Password *</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control input-sm" id="signup[password]" name="signup[password]" value="" size="16" />
                         <span class="error small text-danger"></span>
@@ -89,10 +89,20 @@ url: /login
                 </div>
 
                 <div class="form-group">
-                    <label for="signup[password_confirmation]" class="col-sm-3 control-label">Confirm</label>
+                    <label for="signup[password_confirmation]" class="col-sm-3 control-label">Confirm *</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control input-sm" id="signup[password_confirmation]" name="signup[password_confirmation]" value="" size="16" />
                         <span class="error small text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="accepts_marketing" id="accepts_marketing" checked> I would like to receive promotional emails
+                            </label>
+                        </div>
                     </div>
                 </div>
 
