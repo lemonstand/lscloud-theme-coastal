@@ -6,8 +6,8 @@
             <img src="{{ product.images.first.thumbnail(746, 'auto')|default('http://placehold.it/460x300') }}" alt="{{ product.name }}" id="product-image" />
         </figure>
 
-        <h5>Additional Views</h5>
         {% if product.images.count > 1 %}
+        <h5>Additional Views</h5>
         <ul class="thumblist js-thumblist" data-target="#product-image">
             {% for image in product.images %}
             <li>

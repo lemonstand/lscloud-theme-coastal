@@ -152,4 +152,8 @@ $(document).ready(function() {
             }
         });
     });
+    // Checks the first radio button, if product has size options.
+    if ($('.size-group').length) {
+        $(".js-check:first").attr('checked', true);
+    }
 });
