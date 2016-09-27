@@ -9,7 +9,7 @@
         <div class="size-group">
             {% for key, value in option.values %}
             <label class="radio-inline">
-                <input type="radio" id="inlineCheckbox1" value='{{ key }}' {{ radio_state(postedOptions[option.id], key) }} name="options[{{ option.id }}]" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product" />
+                <input class="js-check" type="radio" id="inlineCheckbox1" value='{{ key }}' {{ radio_state(postedOptions[option.id], key) }} name="options[{{ option.id }}]" data-ajax-handler="shop:product" data-ajax-update="#product-page=shop-product" />
                 <span class="value">{{ value }}</span>
             </label>
             {% endfor %}
