@@ -47,6 +47,14 @@
         </div>
 
         <div class="form-group">
+            <label for="billingInfo[streetAddressLine2]" class="col-sm-3 control-label">Address 2</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control input-sm" id="billingInfo[streetAddressLine2]" name="billingInfo[streetAddressLine2]" value="{{ billingInfo.streetAddressLine2 }}" size="40" placeholder="Apt #" />
+                <span class="error small text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-3"></div>
             <div class="col-sm-9 form-inline">
                 <div class="form-group">
@@ -66,10 +74,10 @@
         <div class="form-group">
             <label for="billingInfo[countryId]" class="col-sm-3 control-label">Country *</label>
             <div class="col-sm-7">
-                <!-- 
-                    The state selector updates automatically when the country changes. 
-                    See app.js for the implementation details. 
-                -->   
+                <!--
+                    The state selector updates automatically when the country changes.
+                    See app.js for the implementation details.
+                -->
                 <select id="billing_country" name="billingInfo[countryId]" class="form-control input-sm" data-state-selector="#billing_state" data-current-state="{{ billingInfo.stateId }}">
                     {% for country in countries %}
                     <option {{ option_state(billingInfo.countryId, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
@@ -82,7 +90,7 @@
         <div class="form-group">
             <label for="billingInfo[stateId]" class="col-sm-3 control-label">State *</label>
             <div class="col-sm-9">
-                <select id="billing_state" name="billingInfo[stateId]" class="form-control input-sm" data-ajax-refresh> 
+                <select id="billing_state" name="billingInfo[stateId]" class="form-control input-sm" data-ajax-refresh>
                 {{ partial('shop-stateoptions', {'states': billingStates, 'selected': billingInfo.stateId}) }}
                 </select>
                 <span class="error small text-danger"></span>
@@ -103,7 +111,7 @@
         </div>
 
     </div>
-    
+
     <div class="col-sm-6" id="shipping-info">
         <h4 class="breaker">Shipping Information</h4>
 
@@ -141,6 +149,14 @@
         </div>
 
         <div class="form-group">
+            <label for="shippingInfo[streetAddressLine2]" class="col-sm-3 control-label">Address 2</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control input-sm" id="shippingInfo[streetAddressLine2]" name="shippingInfo[streetAddressLine2]" value="{{ shippingInfo.streetAddressLine2 }}" size="40" placeholder="Apt #" />
+                <span class="error small text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-3"></div>
             <div class="col-sm-9 form-inline">
                 <div class="form-group">
@@ -160,10 +176,10 @@
         <div class="form-group">
             <label for="shippingInfo[countryId]" class="col-sm-3 control-label">Country *</label>
             <div class="col-sm-7">
-                <!-- 
-                    The state selector updates automatically when the country changes. 
-                    See app.js for the implementation details. 
-                -->   
+                <!--
+                    The state selector updates automatically when the country changes.
+                    See app.js for the implementation details.
+                -->
                 <select id="shipping_country" name="shippingInfo[countryId]" class="form-control input-sm" data-state-selector="#shipping_state" data-current-state="{{ shippingInfo.stateId }}">
                     {% for country in countries %}
                     <option {{ option_state(shippingInfo.countryId, country.id) }} value="{{ country.id }}">{{ country.name }}</option>
@@ -176,7 +192,7 @@
         <div class="form-group">
             <label for="shippingInfo[stateId]" class="col-sm-3 control-label">State *</label>
             <div class="col-sm-9">
-                <select id="shipping_state" name="shippingInfo[stateId]" class="form-control input-sm" data-ajax-refresh> 
+                <select id="shipping_state" name="shippingInfo[stateId]" class="form-control input-sm" data-ajax-refresh>
                 {{ partial('shop-stateoptions', {'states': shippingStates, 'selected': shippingInfo.stateId}) }}
                 </select>
                 <span class="error small text-danger"></span>
@@ -204,7 +220,7 @@
           <span class="error"></span>
         </div>
       </div>
-      
+
       <label for="shipping_address">Address</label>
       <textarea name="shippingInfo[streetAddressLine1]" id="shipping_address">{{ shippingInfo.streetAddressLine1 }}</textarea>
       <span class="error"></span>
@@ -232,7 +248,7 @@
         </div>
         <div class="six columns">
           <label for="shipping_state">State</label>
-          <select id="shipping_state" name="shippingInfo[stateId]" data-ajax-refresh > 
+          <select id="shipping_state" name="shippingInfo[stateId]" data-ajax-refresh >
             {{ partial('shop-stateoptions', {'states': shippingStates, 'selected': shippingInfo.stateId}) }}
           </select>
           <span class="error"></span>
@@ -242,7 +258,7 @@
     </div>
 </div>
 
-<div class="row"> 
+<div class="row">
     <div class="col-sm-12 text-right">
         <!-- See the onSetBillingAndShippignInfo AJAX handler implementation on the Checkout page's AJAX tab -->
         <a class="btn btn-primary" href="#" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart">Save and Continue</a>
