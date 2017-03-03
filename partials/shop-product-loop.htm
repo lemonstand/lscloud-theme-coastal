@@ -2,6 +2,7 @@
 {% paginate products by items_per_page %}
  <div class="row">
     {% for product in pagination.items %}
+    {% set is_on_sale = product.onSale %}
     {% set page_url = '/product/' ~ product.url_name %}
     <div class="col-xs-6 col-sm-6 col-md-3 {{ is_on_sale ? 'sale' : null }}">
         <div class="item">
