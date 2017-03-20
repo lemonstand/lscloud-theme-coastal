@@ -6,6 +6,19 @@
             <img src="{{ product.images.first.thumbnail(746, 'auto')|default('http://placehold.it/460x300') }}" alt="{{ product.name }}" id="product-image" />
         </figure>
 
+        <div class="product-social-buttons"><!--
+            {% if theme.socialToggle %}
+                              <div class="social">
+                                <div id="sharrre">
+                                    <div class="facebook"></div>
+                                    <div class="twitter"><button class="btn btn-mini btn-twitter"><i class="icon-twitter"></i> &nbsp; {total}</button></div>
+                                    <div class="googleplus"></div>
+                                    <div class="pinterest"></div>
+                                </div>
+                            </div>
+                            {% endif %}-->
+        </div>
+
         {% if product.images.count > 1 %}
         <h5>Additional Views</h5>
         <ul class="thumblist js-thumblist" data-target="#product-image">
@@ -35,10 +48,40 @@
         </div>
 
         <div class="PRD__options">
+        <!--
+            {{ partial('shop-product-review') }}-->
+            <!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+            <hr>
+            {{ partial('shop-product-tiers')}}
+            <hr>
             {{ partial('shop-product-attributes') }}
+            <hr>
             {{ partial('shop-product-options') }}
+            <hr>
             {{ partial('shop-product-extras') }}
+            <hr>
         
     {% if product.enabled %}
         {% if not product.isOutOfStock() %}
@@ -47,6 +90,8 @@
                 <label class="title" for="customDropdown">Quantity</label>
                 <input type="text" size="1" value="{{ quantity|default("1") }}" name="quantity" class="form-control input-sm" />
             </div>
+
+            <div class="stock-level">{{ product.in_stock_amount }} available</div>
 
             <div class="form-group add-to-cart-block">
                 <input type="hidden" name="productId" value="{{ product.id }}" />

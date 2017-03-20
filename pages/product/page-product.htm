@@ -13,6 +13,20 @@ url: '/product/:urlName'
             {{ partial('shop-product') }}
         </div>
         
+        
+        <div class="container buffer-bottom PRD" id="products-related">
+        <div class="row">
+                <div class="col-lg-12 related-items">
+                <h3>Related items</h3>
+                    {% for product in product.crosssells %}
+                        {{ partial('shop-product-grid-item', {'product':product}) }}
+                    {% endfor %}
+                    {% for product in product.upsells %}
+                        {{ partial('shop-product-grid-item', {'product':product}) }}
+                    {% endfor %}
+                </div>
+        </div>
+        </div>
         {# set related_products = product.list_related_products().find_all() %}
         {% if related_products.count %}
         <div class="container-fluid bg-muted buffer-top buffer-bottom related-items">

@@ -49,6 +49,8 @@
             </ul>
             {% endtree %}
 
+            {{ widget_block("header-menu") }}
+
             {{ open_form({'class': 'navbar-form navbar-right sitesearch', 'method': 'get', 'action': site_url('search')}) }}
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search" name="query" value="{{query|unescape}}" />
