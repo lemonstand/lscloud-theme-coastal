@@ -56,6 +56,13 @@
                   <span class="price">{{ product.price|currency }}</span>
                 {% endif %}
             </p>
+            {% if product.description %}
+              <div class="row PRD__description">
+                <div class="col-sm-12">
+                    <h5>Description</h5> {{ product.description|unescape }}
+                </div>
+              </div>
+            {% endif %}
         </div>
 
         <div class="PRD__options">
@@ -91,12 +98,6 @@
             {% endif %}
         </div>
 
-        {% if product.description %}
-          <div class="row PRD__description">
-            <div class="col-sm-12">
-                <h5>Description</h5> {{ product.description|unescape }}
-            </div>
-          </div>
-        {% endif %}
+
     </div>
 </div>
