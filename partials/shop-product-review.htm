@@ -1,38 +1,34 @@
 {% if theme.ratingToggle %}
-                                        <div class="product-rating-container">
-                                        <!-- product ratings -->
-                                            {% set product_rating = product.rating() %}
-                                            <p style="display: inline;">
-                                              {% if product_rating.total_reviews %}
-                                            <span style="margin-right: -4px">
-                                              {% for i in range(1, product_rating.average_int) %}&starf;{% endfor %}
-                                            </span>
-                                            {% if product_rating.average_int != 5 %}{% for i in range(1, 5 - product_rating.average_int) %}&star;{% endfor %}{% endif %}
-                                             ({{ product_rating.total_reviews }})
-                                            {% else %}
-                                            &star;&star;&star;&star;&star;
-                                             (no reviews yet)
-                                            {% endif %}
-                                            </p>
+<div class="product-rating-container">
+    <!-- product ratings -->
+    {% set product_rating = product.rating() %}
+    <p style="display: inline;">
+      {% if product_rating.total_reviews %}
+        <span style="margin-right: -4px">
+          {% for i in range(1, product_rating.average_int) %}&starf;{% endfor %}
+        </span>
+        {% if product_rating.average_int != 5 %}
+          {% for i in range(1, 5 - product_rating.average_int) %}
+            &star;
+          {% endfor %}
+        {% endif %}
 
-                                            {% if product_rating.total_reviews %}
+        ({{ product_rating.total_reviews }})
+      {% else %}
+        &star;&star;&star;&star;&star;
+        (no reviews yet)
+      {% endif %}
+    </p>
 
-                                              <!-- View Review -->
-                                              <a data-toggle="modal" data-target="#viewModal" href="#">View Review(s)</a>
-                                              &nbsp;&nbsp;|&nbsp;&nbsp;
+    {% if product_rating.total_reviews %}
+      <!-- View Review -->
+      <a id="view-review" data-toggle="modal" data-target="#viewModal" href="#">View Review(s)</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+    {% endif %}
 
-                                              <!-- Write Review -->
-                                              <a data-toggle="modal" data-target="#writeModal" href="#">Write Review</a>
+    <!-- Write Review -->
+    <a data-toggle="modal" data-target="#writeModal" href="#">Write Review</a>
 
-                                            {% else %}
-                                              <!-- Write Review -->
-                                              <a id="write-review" href="#">Write Review</a>
-                                            {% endif %}
-                                            <div id="viewModal" class="modal fade" role="dialog">
-                                                {{ partial('shop-product-review-view') }}
-                                            </div>
-                                            <div id="writeModal" class="modal fade" role="dialog">
-                                                {{ partial('shop-product-review-form') }}
-                                            </div>
-                                        </div>
-                                        {% endif %}
+    
+
+</div>
+{% endif %}

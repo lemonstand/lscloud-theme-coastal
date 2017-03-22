@@ -1,5 +1,6 @@
 {% if product.productAttributes.count %}
-  <table class="volume-pricing-table"">
+  <hr>
+  <table class="volume-pricing-table">
     {% for attribute in product.productAttributes %}
       <tr>
         <td>{{ attribute.name }}</td>

@@ -1,5 +1,5 @@
 {{ open_form() }}
-    {% paginate products by 48 %}
+    {% paginate products by 20 %}
 
     <div class="row">
     {% for product in pagination.items %}
@@ -33,7 +33,7 @@
         {% else %}
         {% if empty_text %}<li class="empty">{{ empty_text }}</li>{% endif %}
         {% endfor %}
-    
+
     </div>
 
     <div class="pagination-centered">

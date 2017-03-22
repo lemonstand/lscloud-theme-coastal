@@ -5,3 +5,115 @@ custom.css
 + put your custom styles in here
 --------------------------------
 */
+.pagination-centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pagination > ul > li {
+  border: 2px solid #ccc;
+  padding: 5px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.pagination > ul > li > a {
+  color: #999;
+  font-weight: bold;
+}
+
+.pagination > ul > li.active {
+  background-color: #242424;
+  border-color: #242424;
+}
+
+.pagination > ul > li.active > a {
+  color: #fff;
+}
+
+.hero__bg.hero__bg--c-b.featured-image {
+  background-position: center;
+  background-size: cover;
+  height: 400px;
+  position: relative;
+}
+
+.blog-content {
+  padding-top: 10px;
+}
+
+.volume-pricing-table {width:100%;}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  font-size: 3.15733em; }
+  .rating span {
+    color: #555;
+    display: inline-block;
+    position: relative;
+    cursor: pointer; }
+  .rating span:hover, .rating span:hover ~ span {
+    color: transparent; }
+  .rating span:hover:before, .rating span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: gold; }
+  .rating span.select {
+    color: transparent; }
+  .rating span.select:before {
+    content: "\2605";
+    position: absolute;
+    color: gold; }
+  .rating p {
+    font-size: 0.5em;
+    margin: 0.25em 0 1.5em 0;
+    color: #555; }
+
+.btn.facebook, .btn.twitter, .btn.pinterest, .btn.googleplus {
+  text-transform: uppercase; border:none;
+}
+
+.social .btn > i {
+  font-size: 18px;
+  color: #FFF;
+}
+
+.social .badge.counter {
+  background: #FFF;
+  color: #000;
+  border: none;
+}
+
+.social .facebook .badge.counter {
+  color: #3b5998;
+}
+
+.social .twitter .badge.counter {
+  color: #55acee;
+}
+
+.social .pinterest .badge.counter {
+  color: #ce2127;
+}
+
+.social .google .badge.counter {
+  color: #d50f25;
+}
+
+.btn.facebook {
+  background: #3b5998;
+}
+
+.btn.twitter {
+  background: #55acee;
+}
+
+.btn.pinterest {
+  background: #ce2127;
+}
+
+.btn.google {
+  background: #d50f25;
+  text-transform: uppercase; border:none;
+}

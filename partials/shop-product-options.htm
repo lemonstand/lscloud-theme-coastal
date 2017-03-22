@@ -1,5 +1,5 @@
 {% if product.options.count %}
-    
+    <hr> 
     {% for index, option in product.options %}
     <div class="form-group">
         <label class="h5" for="{{ 'option-'~index }}">{{ option.name }}</label>

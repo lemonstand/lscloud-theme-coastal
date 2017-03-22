@@ -5,6 +5,7 @@ $(window).on('onAjaxAfterUpdate', function() {
 });
 
 $(document).ready(function() {
+  
     (function($) {
         "use strict";
         $(document).on("click", ".js-thumblist a", function(e) {
@@ -157,3 +158,7 @@ $(document).ready(function() {
         $(".js-check:first").attr('checked', true);
     }
 });
+
+function writeReview() {
+    $('#writeModal').modal('show');
+}
