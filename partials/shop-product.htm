@@ -75,6 +75,7 @@
             {{ partial('shop-product-extras') }}
             {% if product.enabled %}
               {% if not product.isOutOfStock() %}
+                <hr />
                 <div class="form-group">
                   <label class="title" for="customDropdown">Quantity</label>
                   <input type="text" size="1" value="{{ quantity|default(" 1 ") }}" name="quantity" class="form-control input-sm" />
