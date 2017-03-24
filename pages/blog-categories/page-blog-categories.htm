@@ -1,0 +1,42 @@
+---
+action: 'cmscontent:archive'
+template: inner
+protocol: all
+published: true
+name: Blog Categories
+url: /archives/:type/:category
+---
+<div class="container CATEGORY">
+
+    {% if archives | length > 0 %}
+      {% paginate archives by 5 %}
+        {% set publishedPosts = 0 %}
+        <div class="col-sm-2 CATEGORY__left">
+          <div class="collapse navbar-collapse" id="sidenav-category" role="navigation">
+            <h4>Categories</h4>
+            {{ partial('blog-categories') }}
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-10">
+          <h3>{{ category }}</h3>
+          {% for post in pagination.items %}
+            <div>
+              <h3><a href="/blog/{{ post.guid }}">{{ post.title }}</a></h3>
+              <div>{{ post.excerpt | unescape }}</div>
+              <div><a href="/blog/{{ post.guid }}">Read More</a></div>
+            </div>
+            <hr/>
+          {% endfor %}
+          <div class="pagination-centered">
+            <div class="pagination">
+              {% navigation %}
+            </div>
+          </div>
+        </div>
+      {% endpaginate %}
+    {% else %}
+      <div class="col-xs-12 col-sm-12">
+        <h2>No posts found</h2>
+      </div>
+    {% endif %}
+</div>

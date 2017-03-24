@@ -40,14 +40,13 @@
         <div class="collapse navbar-collapse" id="global-nav">
 
             {% set active_page = globals.active_page|default('home') %}
-            {% tree categories %}
+
             <ul class="nav navbar-nav sitenav sitenav--primary">
-                {% for category in tree.items %}
-                <li><a href="/category/{{ category.url_name }}"{{ active_page == category.name ? ' class="active"' : null }}>{{ category.name }}</a></li>
-                {% endfor %}
-                <li><a class="text-bright" href="/sale/">Sale</a></li>
+              {{ widget_block("header-menu") }}
             </ul>
-            {% endtree %}
+
+
+
 
             {{ open_form({'class': 'navbar-form navbar-right sitesearch', 'method': 'get', 'action': site_url('search')}) }}
                 <div class="form-group">
@@ -69,7 +68,7 @@
             <div class="col-sm-6">
                 <h1>{{ page.title }}</h1>
             </div>
-                    
+
             <!-- <div class="col-sm-6 text-right" id="breadcrumbs-area">
                 {{ code_block('breadcrumbs') }}
             </div> -->

@@ -9,24 +9,23 @@
         </div>
         <div class="col-xs-12 col-sm-4 text-right--sm">
             <ul class="list-inline">
-                {% if theme.socialFacebookUrl %} 
+                {% if theme.socialFacebookUrl %}
                 <li><a href="{{ theme.socialFacebookUrl }}"><i class="fa fa-2x fa-facebook"></i><span class="sr-only">Facebook</span></a></li>
                 {% endif %}
-                {% if theme.socialTwitterUrl %} 
+                {% if theme.socialTwitterUrl %}
                 <li><a href="{{ theme.socialTwitterUrl }}"><i class="fa fa-2x fa-twitter"></i><span class="sr-only">Twitter</span></a></li>
                 {% endif %}
-                {% if theme.socialInstagramUrl %} 
+                {% if theme.socialInstagramUrl %}
                 <li><a href="{{ theme.socialInstagramUrl }}"><i class="fa fa-2x fa-instagram"></i><span class="sr-only">Instagram</span></a></li>
                 {% endif %}
-                {% if theme.socialPinterestUrl %} 
+                {% if theme.socialPinterestUrl %}
                 <li><a href="{{ theme.socialPinterestUrl }}"><i class="fa fa-2x fa-pinterest"></i><span class="sr-only">Pinterest</span></a></li>
-                {% endif %}                    
+                {% endif %}
             </ul>
         </div>
     </div>
 
     <div class="row buffer-bottom">
-
         <div class="col-sm-2">
             <h5 class="text-caps">Shop</h5>
             {% tree categories %}
@@ -50,14 +49,10 @@
             </ul>
         </div>
 
-        <div class="col-sm-2 mb1--xs">
+        <div class="col-sm-2 mb1--xs custom-footer-menu">
             <h5 class="text-caps">Coastal</h5>
-            <ul class="list-simple">
-                <li><a href="#">Blog</a></li>
-                <li><a href="{{ site_url('about') }}">About</a></li>
-            </ul>
+            {{ widget_block("footer-menu") }}
         </div>
-
         <div class="col-sm-4 col-sm-offset-2 text-right--sm">
             {% if theme.footerTagline %}
             <h5>{{ theme.footerTagline }}</h5>
@@ -76,8 +71,6 @@
 {{ partial('modal-minicart') }}
 </div>
 
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="/cms/core.js"></script>
 
 <script src="{{ 'scripts/vendor.js'|theme_resource }}"></script>

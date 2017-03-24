@@ -5999,3 +5999,24 @@ Cart Page
 @media (max-width: 767px) {
   .order-summary .row {
     text-align: right; } }
+
+
+
+.stock-level { font-weight: bold; margin-bottom: 5px;  }
+.volume-pricing-table { margin-bottom: 15px; }
+.volume-pricing-table tr td { padding: 5px 10px 5px 10px; width: 125px; }
+.volume-pricing-table tr { border: 1px solid #ccc; }
+.volume-pricing-table thead td { background-color: #ddd; font-weight:bold;}
+.categories h3, .categories ul.sub-group { padding-left: 10px; }
+.categories ul.sub-group li { list-style-type: none; }
+.category-content { padding-left: 10px; }
+.pagination ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+.pagination ul li a {
+  font-size: 18px;
+  padding: 10px;
+}
+.related-items li.related-item { display: inline-block; }
+.related-items li.related-item .item a img {height: 100%; width: 100%;}

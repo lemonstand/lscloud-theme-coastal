@@ -11,10 +11,10 @@ url: '/shop/:page?'
 
     <div class="row">
         <div class="col-sm-2 hidden-xs">
-            {{ partial('shop-categories') }}            
+            {{ partial('shop-categories') }}
         </div>
         <div class="col-xs-12 col-sm-10">
-        	{{ 
+        	{{
 		        partial('shop-product-list', {
 		          'products': products
 		        })

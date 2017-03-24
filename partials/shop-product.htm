@@ -6,6 +6,30 @@
             <img src="{{ product.images.first.thumbnail(746, 'auto')|default('http://placehold.it/460x300') }}" alt="{{ product.name }}" id="product-image" />
         </figure>
 
+        {% if theme.socialToggle %}
+          <div class="social social-links">
+            <button class="facebook btn btn-sm share s_facebook">
+              <i class="fi-social-facebook"></i> &nbsp;
+              <span class='badge counter c_facebook'>&nbsp;</span>
+            </button>
+
+            <button class="twitter btn btn-sm share s_twitter">
+                <i class="fi-social-twitter"></i>
+            </button>
+
+            <button class="google btn btn-sm share s_plus">
+                <i class="fi-social-google-plus"></i> &nbsp;
+                <span class='badge counter c_plus'>&nbsp;</span>
+            </button>
+
+            <button class="pinterest btn btn-sm share s_pinterest">
+                <i class="fi-social-pinterest"></i> &nbsp;
+                <span class='badge counter c_pinterest'>&nbsp;</span>
+            </button>
+
+          </div>
+        {% endif %}
+
         {% if product.images.count > 1 %}
         <h5>Additional Views</h5>
         <ul class="thumblist js-thumblist" data-target="#product-image">
@@ -26,53 +50,55 @@
             <h1 class="PRD__name">{{ product.name }}</h1>
             <p class="h3 PRD__price">
                 {% if on_sale %}
-                <span class="price oldprice">was {{ product.fullPrice|currency }}</span>
-                <span class="price curprice">now {{ product.price|currency }}</span>
+                  <span class="price oldprice">was {{ product.fullPrice|currency }}</span>
+                  <span class="price curprice">now {{ product.price|currency }}</span>
                 {% else %}
-                <span class="price">{{ product.price|currency }}</span>
+                  <span class="price">{{ product.price|currency }}</span>
                 {% endif %}
             </p>
+            {% if product.description %}
+              <div class="row PRD__description">
+                <div class="col-sm-12">
+                    <h5>Description</h5> {{ product.description|unescape }}
+                </div>
+              </div>
+            {% endif %}
         </div>
 
         <div class="PRD__options">
-
+          {{ flash() }}
+          {{ partial('shop-product-review-view') }}
+          {{ partial('shop-product-review') }}
+            {{ partial('shop-product-tiers')}}
             {{ partial('shop-product-attributes') }}
             {{ partial('shop-product-options') }}
             {{ partial('shop-product-extras') }}
-        
-    {% if product.enabled %}
-        {% if not product.isOutOfStock() %}
-            {{ flash() }}
-            <div class="form-group">
-                <label class="title" for="customDropdown">Quantity</label>
-                <input type="text" size="1" value="{{ quantity|default("1") }}" name="quantity" class="form-control input-sm" />
-            </div>
+            {% if product.enabled %}
+              {% if not product.isOutOfStock() %}
+                <hr />
+                <div class="form-group">
+                  <label class="title" for="customDropdown">Quantity</label>
+                  <input type="text" size="1" value="{{ quantity|default(" 1 ") }}" name="quantity" class="form-control input-sm" />
+                </div>
 
-            <div class="form-group add-to-cart-block">
-                <input type="hidden" name="productId" value="{{ product.id }}" />
-                <a class="btn btn-dark js-addtocart" href="#">Add to Cart</a>
-            </div>
+                <div class="stock-level">{{ product.in_stock_amount }} available</div>
 
-        {% else %}
-            <div class="not-available">
-                <p>This product is temporarily unavailable.</p>
-            </div>
-        {% endif %}
-    {% else %}
-            <div class="not-available">
-                <p>This product is not available.</p>
-            </div>
-    {% endif %}
+                <div class="form-group add-to-cart-block">
+                  <input type="hidden" name="productId" value="{{ product.id }}" />
+                  <a class="btn btn-dark js-addtocart" href="#">Add to Cart</a>
+                </div>
+
+            {% else %}
+              <div class="not-available">
+                  <p>This product is temporarily unavailable.</p>
+              </div>
+            {% endif %} {% else %}
+              <div class="not-available">
+                  <p>This product is not available.</p>
+              </div>
+            {% endif %}
         </div>
 
-        {% if product.description %}
-        <div class="row PRD__description">
-            <div class="col-sm-12">
-                <h5>Description</h5>
-                {{ product.description|unescape }}
-            </div>
-        </div>
-         {% endif %}
+
     </div>
-
 </div>

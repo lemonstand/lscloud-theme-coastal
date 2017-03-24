@@ -13,4 +13,6 @@ customFields:
     footerTagline: { type: text, title: 'Footer tagline', default: 'This is the free Coastal theme.', comment: 'Suggested length is less than 40 characters' }
     topbarColor: { type: color, title: 'Color - top bar', default: '', comment: 'Remove color for default' }
     footerColor: { type: color, title: 'Color - footer', default: '', comment: 'Remove color for default' }
+    ratingToggle: { type: checkbox, title: 'Product Ratings', default: checked, comment: 'Activate product ratings for this theme.' }
+    socialToggle: { type: checkbox, title: 'Social Links', default: checked, comment: 'Activate social media links.' }
 ---

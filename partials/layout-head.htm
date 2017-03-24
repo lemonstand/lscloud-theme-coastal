@@ -8,11 +8,15 @@
 <meta name="Keywords" content="{{ page.keywords }}"/>
 
 <title>{% if theme.logoText %}{{ theme.logoText }} &middot; {% endif %}{{ page.title }}</title>
-
+<link rel="stylesheet" type="text/css" href="{{ 'styles/fonts/foundation/foundation-icons.css'|theme_resource }}">
 <link rel="stylesheet" type="text/css" href="/cms/core.css">
 <link rel="stylesheet" type="text/css" href="{{ 'styles/main.css'|theme_resource }}">
 <link rel="stylesheet" type="text/css" href="{{ 'styles/custom.css'|theme_resource }}">
-
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style>
 {% if theme.topbarColor %}
 .siteheader {
@@ -44,4 +48,60 @@ WebFontConfig = {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(wf, s);
 })();
+$(function() {
+    $(".custom-footer-menu ul").not("list-simple").addClass("list-simple");
+    $("#global-nav ul").not(".sitenav").children().appendTo("ul.sitenav");
+    //
+    // Star rating
+    //
+    $('.rating > span').click(function() {
+        var currentId = $(this).attr('id');
+        if ( currentId === 'hate' ) {
+            $('#hate').addClass('select');
+            $( '#dont-like, #ok, #like, #love' ).removeClass('select');
+            $('.rating > p').text( 'I hate it' );
+            $("#item_rating").val('1');
+        }
+        if ( currentId === 'dont-like' ) {
+            $( '#hate, #dont-like' ).addClass('select');
+            $( '#ok, #like, #love' ).removeClass('select');
+            $('.rating > p').text( 'I don\'t like it' );
+            $("#item_rating").val('2');
+        }
+        if ( currentId === 'ok' ) {
+            $( '#hate, #dont-like, #ok' ).addClass('select');
+            $( '#like, #love' ).removeClass('select');
+            $('.rating > p').text( 'It\'s ok' );
+            $("#item_rating").val('3');
+        }
+        if ( currentId === 'like' ) {
+            $( '#hate, #dont-like, #ok, #like' ).addClass('select');
+            $( '#love' ).removeClass('select');
+            $('.rating > p').text( 'I like it' );
+            $("#item_rating").val('4');
+        }
+        if ( currentId === 'love' ) {
+            $( '#hate, #dont-like, #ok, #like, #love' ).addClass('select');
+            $('.rating > p').text( 'I love it' );
+            $("#item_rating").val('5');
+        }
+        console.log($('#item_rating').val());
+    });
+});
 </script>
+
+{% if globals.active_page == 'shop' %}
+  <script type="text/javascript" src="{{ 'scripts/vendor/social.js'|theme_resource }}"></script>
+  <script>
+    $(document).ready(function(){
+      $('.share').ShareLink();
+
+      $('.counter').ShareCounter({
+        url: $(location).attr('href'),
+        class_prefix: 'c_',
+        display_counter_from: 0,
+        increment: true
+      });
+    });
+  </script>
+{% endif %}
