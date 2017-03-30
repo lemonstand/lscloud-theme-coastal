@@ -5,7 +5,7 @@ $(window).on('onAjaxAfterUpdate', function() {
 });
 
 $(document).ready(function() {
-  
+
     (function($) {
         "use strict";
         $(document).on("click", ".js-thumblist a", function(e) {
@@ -161,4 +161,13 @@ $(document).ready(function() {
 
 function writeReview() {
     $('#writeModal').modal('show');
+}
+
+function submitOverride(){
+  $('#shipping-info :input').removeAttr('disabled');
+  $('#shipping-info :input').attr('readonly', 'readonly');
+  $('body').bind('onAjaxError', function(e){
+    $('#shipping-info :input').removeAttr('readonly');
+    $('#shipping-info :input').attr('disabled', 'disabled');
+  });
 }
