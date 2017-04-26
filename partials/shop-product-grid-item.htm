@@ -1,4 +1,3 @@
-{% set is_on_sale = product.onSale %}
 {% set page_url = '/product/' ~ product.url_name %}
 
 <div class="col-xs-6 col-sm-6 col-md-3 sale">
@@ -13,8 +12,8 @@
       <h5><a href="{{ page_url }}">{{ product.name }}</a></h5>
       <p class="item__pricing">
         <a href="{{ page_url }}">
-            {% if is_on_sale %}
-              <span class="price oldprice">{{ product.fullPrice|currency }}</span>
+            {% if product.product_relation.is_on_sale == true and product.discount is null %}
+              <span class="price oldprice">{{product.product_relation.base_price|currency}}</span>
             {% endif %}
 
             {% if product.type == 'upsell' and product.discount %}
@@ -25,7 +24,13 @@
                   {{ (product.product_relation.base_price - product.discount)|currency }}
                 </span>
             {% else %}
+              {% if product.product_relation.is_on_sale == true and product.discount is null %}
+                <span class="price newprice">
+                  {{(product.product_relation.base_price + product.product_relation.sale_price_or_discount)|currency }}
+                </span>
+              {% else %}
                 {{ product.product_relation.base_price|currency }}
+              {% endif %}
             {% endif %}
         </a>
       </p>

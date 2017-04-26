@@ -11,7 +11,7 @@
             <a class="btn btn-dark btn-sm" href="#" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart">Update cart</a>
         </div>
     </div>
-  
+
     <div class="row buffer-top mb1">
 
         <!-- Promo Codes -->
@@ -27,48 +27,11 @@
         </div>
         <!-- // Promo Codes -->
 
-        <!-- Shipping Estimate -->
-        <!--
-        <div class="col-sm-5">
-            <h4 class="breaker">Shipping rates calculator</h4>
-
-            <div class="form-inline">
-                <div class="form-group mr05">
-                    <label class="small full" for="country">Country</label>
-                    <select class="form-control" id="country" name="country" data-state-select="state" data-current-state="{{ shipping_info.state }}">
-                        {% for country in countries %}
-                          <option value="{{ country.id }}" {{ option_state(country.id, shipping_info.country) }}>{{ country.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div class="form-group mr05">
-                    <label class="small full" for="state">State</label>
-                    <select id="state" name="state" class="form-control"> 
-                        {# partial('shop-stateoptions', {'states': states, 'current_state': shipping_info.state}) #}
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="small full" for="zip">Zip/Postal Code</label>
-                    <input name="zip" type="text" value="" class="form-control input-sm" size="6" value="{{ shipping_info.zip }}" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <a class="btn btn-dark btn-xs" href="#" data-ajax-handler="shop:onEvalShippingRate" data-ajax-update="#shipping_options=shopestimatedshippingoptions">Calculate</a>
-
-                <div id="shipping_options"></div>
-            </div>                   
-        </div>
-        -->
-        <!-- // Shipping Estimate -->
-
         <!-- Order Summary -->
         <div class="col-sm-5 col-sm-offset-4 data-list order-summary">
-            <h4 class="breaker">Order Summary</h4>            
+            <h4 class="breaker">Order Summary</h4>
 
-            
+
 
             {% if totals.discountTotal > 0 %}
             <p class="row">

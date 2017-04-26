@@ -1,4 +1,5 @@
-{% if product.priceTiers %}
+
+{% if product.priceTiers|length > 0 %}
   <h5>Bulk Pricing</h5>
   <table class="volume-pricing-table">
       <thead>
