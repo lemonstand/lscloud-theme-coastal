@@ -1,0 +1,32 @@
+{
+  "name": "coastal",
+  "version": "1.0.0",
+  "description": "Coastal is a minimal, responsive theme. While you can definitely use Coastal as-is, Coastal is meant to be modified. The HTML is lean, and the theme is built on the Bootstrap framework, making it easy to change as desired. Also, an optional custom.css is referenced in the theme to make adding overriding styles even easier.",
+  "main": "index.js",
+  "lemonstand" : {
+    "code":"coastal",
+    "type": "theme",
+    "options": "options.json",
+    "demo" : "https//coastal.lemonstand.com",
+    "screenshot" : {
+      "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/tiny-square.png",
+      "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/large-square.png"
+    }
+  },  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonstand/lscloud-theme-coastal.git"
+  },
+  "keywords": [
+    "minimal"
+  ],
+  "author": "Bruce Alderson <bruce@lemonstand.com> (http://lemonstand.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lemonstand/lscloud-theme-coastal/issues"
+  },
+  "homepage": "https://github.com/lemonstand/lscloud-theme-coastal#readme"
+}
