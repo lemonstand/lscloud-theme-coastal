@@ -1,0 +1,63 @@
+{
+  "settings": {
+    "logoText": {
+      "type": "text",
+      "title": "Logo text",
+      "default": "COASTAL",
+      "comment": "Replaces all instance of your logo name around the site"
+    },
+    "socialFacebookUrl": {
+      "type": "text",
+      "title": "Facebook URL",
+      "default": "http://facebook.com/lemonstand"
+    },
+    "socialTwitterUrl": {
+      "type": "text",
+      "title": "Twitter URL",
+      "default": "http://twitter.com/hotmeteor"
+    },
+    "socialInstagramUrl": {
+      "type": "text",
+      "title": "Instagram URL",
+      "default": "http://instagram.com"
+    },
+    "socialPinterestUrl": {
+      "type": "text",
+      "title": "Pinterest URL",
+      "default": "http://pinterest.com"
+    },
+    "footerTagline": {
+      "type": "text",
+      "title": "Footer tagline",
+      "default": "This is the free Coastal theme.",
+      "comment": "Suggested length is less than 40 characters"
+    },
+    "topbarColor": {
+      "type": "color",
+      "title": "Color - top bar",
+      "default": "",
+      "comment": "Remove color for default"
+    },
+    "footerColor": {
+      "type": "color",
+      "title": "Color - footer",
+      "default": "",
+      "comment": "Remove color for default"
+    },
+    "ratingToggle": {
+      "type": "checkbox",
+      "title": "Product Ratings",
+      "default": "checked",
+      "comment": "Activate product ratings for this theme."
+    },
+    "socialToggle": {
+      "type": "checkbox",
+      "title": "Social Links",
+      "default": "checked",
+      "comment": "Activate social media links."
+    }
+  },
+  "pages": {
+    "404": "404"
+  }
+}
