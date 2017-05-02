@@ -261,7 +261,7 @@
 <div class="row">
     <div class="col-sm-12 text-right">
         <!-- See the onSetBillingAndShippignInfo AJAX handler implementation on the Checkout page's AJAX tab -->
-        <a class="btn btn-primary" href="#" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart">Save and Continue</a>
+        <a class="btn btn-primary" href="#" onclick="submitOverride()" data-ajax-handler="shop:checkout" data-ajax-update="#checkout-page=shop-checkout, #breadcrumbs-area=shop-checkout-progress, #mini-cart=shop-minicart">Save and Continue</a>
     </div>
   </div>
   <input type="hidden" name="step" value="billing_info,shipping_info"/>

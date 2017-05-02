@@ -117,3 +117,14 @@ custom.css
   background: #d50f25;
   text-transform: uppercase; border:none;
 }
+
+.oldprice {
+  text-decoration: line-through;
+}
+
+.related-items .item {
+  height: auto;
+  padding-bottom: 20px;
+}
+
+.extra label {font-weight: normal;}

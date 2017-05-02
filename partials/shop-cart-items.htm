@@ -5,16 +5,15 @@
             <th>Product</th>
             <th class="narrow">Quantity</th>
             <th class="narrow">Price</th>
-            {% if cart.getDiscountTotal() > 0 %}
             <th class="narrow">Discount</th>
             <th class="narrow">Unit Price</th>
-            {% endif %}
             <th class="narrow">Total</th>
             <th class="narrow"></th>
         </tr>
     </thead>
     <tbody>
     {% for item in items %}
+    {% set itemDiscount = ((item.quantity * item.product.price) - item.total()) %}
     <tr>
         <td class="td-col-4">
             <a href="/product/{{ item.product.url_name }}">
@@ -26,8 +25,8 @@
             {% set description = item.optionsString() %}
             {% if description %}
             <span class="text-muted small">{{ description|unescape }}</span>
-            {% endif %}          
-        </td>        
+            {% endif %}
+        </td>
         {%if edit_cart %}
         <td class="narrow td-col-4">
             <input type="text" name="item_quantity[{{ item.key }}]" class="form-control input-sm quantity" value="{{ item.quantity }}" size="1" />
@@ -35,16 +34,20 @@
         {% else %}
         <td class="narrow td-col-4">{{ item.quantity }}</td>
         {% endif %}
-        <td class="narrow td-col-4" data-heading="Price"><i>{{ item.fullPrice()|currency }}</i></td> 
-        {% if cart.getDiscountTotal() > 0 %}
-          <td class="narrow td-col-4" data-heading="Discount"><i class="newprice">{{ item.totalDiscount()|currency }}</i></td>
+        <td class="narrow td-col-4" data-heading="Price"><i>{{ item.fullPrice()|currency }}</i></td>
+
+        {% if itemDiscount > 0 %}
+          <td class="narrow td-col-4" data-heading="Discount"><i class="newprice">{{ itemDiscount|currency }}</i></td>
           <td class="narrow td-col-4" data-heading="Unit Price"><i>{{ item.price()|currency }}</i></td>
+        {% else %}
+          <td colspan="2">&nbsp;</td>
         {% endif %}
+
         <td class="narrow td-col-6" data-heading="Total"><i>{{ item.total()|currency }}</i></td>
         <td class="narrow remove td-col-6">
           {%if edit_cart %}
           <a href="#" class="close"
-            data-ajax-handler="shop:cart" 
+            data-ajax-handler="shop:cart"
             {# data-ajax-confirm="Do you really want to remove this item from the cart?" #}
             data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart"
             data-ajax-extra-fields="delete_item='{{ item.key }}'"
