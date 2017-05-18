@@ -1,14 +1,9 @@
-<h3 class="section-title">
-    <a data-toggle="collapse" class="collapsed" data-parent="#profile-addresses" href="#profile-saved-cards">
-    <span>Saved Cards</span>
-    </a>
-</h3>
 <div id="profile-saved-cards" class="panel-collapse collapse in">
     <div class="panel-collapse collapse in col-md-6">
         <div>
             {% if customer.cards|length %}
                 <div class="form-group">
-                <table class="card-table">
+                <table class="table card-table">
                 {% for card in customer.cards %}
                 <tr>
                     <th>
@@ -47,12 +42,10 @@
     </div>
 
     <div class="panel-collapse collapse in col-md-6">
-        <div>
             {% for card in customer.cards %}
                 {{ partial('shop-customerprofile-edit-card-form', {'card' : card}) }}
             {% endfor %}
             
             {{ partial('shop-customerprofile-add-card-form') }}
-        </div>
     </div>
 </div>
