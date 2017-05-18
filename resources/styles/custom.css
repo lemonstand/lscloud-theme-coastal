@@ -128,3 +128,30 @@ custom.css
 }
 
 .extra label {font-weight: normal;}
+
+/* Card Form */
+.ls-card-form {
+    width: 100%;
+}
+.card-form-expiry-outer label {
+    display: inherit;
+}
+.card-table {
+    font-size: inherit;
+    background-color: #EEEEEE;
+}
+.card-table th {
+    padding: 10px;
+    color: #777777;
+}
+.card-table a,
+.card-table a:hover,
+.card-table a:focus {
+    text-decoration: underline;
+}
+.card-form-close {
+    display: none;
+}
+.card-form-open {
+    display: block;
+}
