@@ -12,21 +12,29 @@
         {{ paymentForm({
                 options: {
                     number: {
-                        placeholder: 'Card number',
+                        label: ' ',
+                        placeholder: 'Card Number',
+                        style: "font-family: Helvetica Neue, Courier New, Courier Monospace, monospace; letter-spacing: 1.5px; font-weight: 300; font-size: 16px; color: #555; line-height: 42px; width: 100%;"
                     },
                     cvv: {
-                        placeholder: '***',
+                        label: ' ',
+                        placeholder: 'CVV',
+                        style: "font-family: Helvetica Neue, Courier New, Courier Monospace, monospace; letter-spacing: 1.5px; font-weight: 300; font-size: 16px; color: #555; line-height: 42px; width: 100%;"
                     },
                     full_name: {
+                        label: ' ',
                         placeholder: 'Cardholder name',
                     },
                     expiry: {
+                        label: ' ',
                         placeholder: 'MM/YYYY',
                     },
                     submit: {
+                        label: ' ',
                         value: 'Pay Now'
                     },
                     save_card: {
+                        label: ' ',
                         label: 'Save Card',
                         enabled: saved_card_enabled
                     }
