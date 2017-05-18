@@ -17,6 +17,33 @@
 
         <div>
 
+            <!--  Pay with stored cards shown in dropdown -->
+                {% if cards is defined %}
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Pay with a Saved Card</h3>
+                        </div>
+
+                        <div class="panel-body row">
+                            <div class="col-sm-3">
+                                <form class="custom saved-card-form" method="post" data-ajax-handler="shop:onPay">
+                                    <input type='hidden' name='payment_method_id' id='payment_method_id' value=''>
+                                    <select name="payment_method_token" class="md-select saved-card-selector" id="saved_card_option" style="margin-bottom: 15px;">
+                                        <option value=''>Select Saved Card</option>
+                                        {% for card in cards %}
+                                            <option id="token-{{ card.token }}" value="{{ card.token }}" card-method="{{ card.paymentMethod.id }}">{{ card.paymentMethod.name }}: {{ card.cardAndBrand }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br>
+                                    <input type="submit" class="btn btn-primary" value="Pay with Saved Card">
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endif %}
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Choose a payment method.</h3>
