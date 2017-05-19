@@ -2,4 +2,6 @@
 .DS_Store
 desktop.ini
 Thumbs.db
-lemonsync.cfg
+.sass-cache
+*.cfg
+node_modules

@@ -18,5 +18,8 @@ url: /checkout
 {% else %}
 <div class="container buffer-bottom" id="checkout-page">
   	{{ partial('shop-checkout') }}
+    {% if hasFeature('saved-cards') %}
+        {{ code_block('script') }}
+    {% endif %}
 </div>
 {% endif %}

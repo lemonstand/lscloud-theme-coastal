@@ -6,6 +6,11 @@
         <li><a href="{{ site_url('orders') }}"{{ active_page == 'orders' ? ' class="current"' : null }}>Order History</a></li>
         <li><a href="{{ site_url('profile') }}"{{ active_page == 'profile' ? ' class="current"' : null }}>Addresses</a></li>
         <li><a href="{{ site_url('password') }}"{{ active_page == 'password' ? ' class="current"' : null }}>Password</a></li>
+        {% if hasFeature('saved-cards') %}
+            <li>
+                <a href="{{ site_url('saved-cards') }}"{{ active_page == 'saved-cards' ? ' class="current"' : null }}>Saved Cards</a>
+            </li>
+        {% endif %}
     </ul>
 
 </div>

@@ -1,0 +1,48 @@
+---
+action: 'shop:customerProfile'
+template: inner
+protocol: all
+published: true
+name: Saved Cards
+url: /saved-cards
+---
+<div class="container buffer-bottom">
+    <div class="row">
+    
+    {% if customer and hasFeature('saved-cards') %}
+
+        {{ partial('account-sidenav') }}
+        
+        <div class="col-xs-12 col-sm-10" id="profile-saved-cards">
+            {% set editedCard = '' %}
+        
+            <div id="profile-edit-card">
+                {{ partial('shop-customerprofile-edit-card') }}
+            </div>
+        
+            {{ code_block('script') }}
+        </div>
+    {% else %} 
+
+        {% if hasFeature('saved-cards') and not customer %}
+
+            <div class="col-sm-12">
+                <p>Please <a href="{{ root_url('login') }}">login</a> to edit your saved cards.</p>
+            </div>
+
+        {% elseif customer and not hasFeature('saved-cards') %}
+            
+            <div class="col-sm-12">
+                <p>This store does not have access to the saved cards feature.</p>
+            </div>
+        
+        {% else %}
+        
+            <div class="col-sm-12">
+                <p>Please <a href="{{ root_url('login') }}">login</a> to edit your profile.</p>
+            </div>
+        
+        {% endif %}
+    {% endif %}
+    </div>
+</div>
