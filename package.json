@@ -2,6 +2,7 @@
   "name": "Coastal",
   "version": "1.0.0",
   "description": "Coastal is a minimal, responsive theme with many areas to add high impact images. While you can definitely use Coastal as-is, Coastal is meant to be customized. The HTML is lean, and the theme is built on the Bootstrap framework, making it easy to change as desired. Also, an optional custom.css is referenced in the theme to make adding overriding styles even easier.",
+  "excerpt": "Coastal is a minimal theme that is meant to be customized, with many areas to add high impact imagery.",
   "main": "index.js",
   "lemonstand" : {
     "code":"coastal",
