@@ -8,10 +8,11 @@
     "code":"coastal",
     "type": "theme",
     "options": "options.json",
-    "demo" : "https://coastal.lemonstand.com",
+    "demo": "https://coastal.lemonstand.com",
     "screenshots" : {
-      "small":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/tiny-square.png",
-      "large":"https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/large-square.png"
+      "small": "https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/tiny-square.png",
+      "large": "https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/large-square.png",
+      "full": "https://raw.githubusercontent.com/lemonstand/lscloud-theme-coastal/master/resources/screenshots/full-size.png"
     }
   },
   "scripts": {
