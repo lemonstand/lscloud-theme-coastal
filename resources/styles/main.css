@@ -6971,9 +6971,6 @@ Marketing
 .mkt__block {
     margin-bottom: 15px;
 }
-.mkt__block a:hover {
-    text-decoration: none;
-}
 .mkt__block--overlay a {
     position: relative;
     overflow: hidden;
