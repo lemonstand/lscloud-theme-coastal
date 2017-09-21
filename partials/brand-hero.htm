@@ -1,7 +1,13 @@
 <div class="container mb1 hero">
     <div class="hero__content text-center">
-        <h1 class="text-white">SUMMER CATALOG</h1>
-        <p class="text-white text-caps"><a href="#">Shop new releases</a></p>
+        <a href="#" class="hero-text">
+            <h1 class="text-white">
+                {{ theme.heroText1 }}
+            </h1>
+            <p class="text-white text-caps">
+                {{ theme.heroText2 }}
+            </p>
+        </a>
     </div>
 
     <div class="hero__bg hero__bg--c-b" style="background-image: url({{ theme.heroImage.thumbnail(500, 'auto')}});"></div>
