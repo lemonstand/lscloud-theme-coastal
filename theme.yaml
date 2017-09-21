@@ -12,26 +12,32 @@ customFields:
     heroImage: { type: image, title: 'Banner Image', default: 'https://farm1.staticflickr.com/52/142306999_627074060b_b.jpg' }
     heroText1: { type: text, title: 'Banner Text 1', default: 'SUMMER CATALOG' }
     heroText2: { type: text, title: 'Banner Text 2', default: 'Shop new releases' }
+    heroLink: { type: text, title: 'Banner Link', default: '#' }
     # BLOCK 1
     block1Image: { type: image, title: 'Block 1 Image', default: 'https://farm3.staticflickr.com/2693/4193135790_dc0d20fb69_b.jpg' }
     block1Text1: { type: text, title: 'Block 1 Text 1', default: 'This is content for block 1.' }
     block1Text2: { type: text, title: 'Block 1 Text 2', default: 'Shop this Feature' }
+    block1Link: { type: text, title: 'Block 1 Link', default: '#' }
     # BLOCK 2
     block2Image: { type: image, title: 'Block 2 Image', default: 'https://farm1.staticflickr.com/19/106619526_630018976b_z.jpg' }
     block2Text1: { type: text, title: 'Block 2 Text 1', default: 'This is content for block 2.' }
     block2Text2: { type: text, title: 'Block 2 Text 2', default: 'Shop this Feature' }
+    block2Link: { type: text, title: 'Block 2 Link', default: '#' }
     # BLOCK 3
     block3Image: { type: image, title: 'Block 3 Image', default: 'https://farm5.staticflickr.com/4051/4297705996_ba97ba018f_z.jpg' }
     block3Text1: { type: text, title: 'Block 3 Text 1', default: 'This is content for block 3.' }
     block3Text2: { type: text, title: 'Block 3 Text 2', default: 'Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.' }
+    block3Link: { type: text, title: 'Block 3 Link', default: '#' }
     # BLOCK 4
     block4Image: { type: image, title: 'Block 4 Image', default: 'https://farm8.staticflickr.com/7013/6527816421_55977c2f6f_z.jpg' }
     block4Text1: { type: text, title: 'Block 4 Text 1', default: 'This is content for block 4.' }
     block4Text2: { type: text, title: 'Block 4 Text 2', default: 'Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.' }
+    block4Link: { type: text, title: 'Block 4 Link', default: '#' }
     # BLOCK 5
     block5Image: { type: image, title: 'Block 5 Image', default: 'https://farm3.staticflickr.com/2795/4248042200_04699a4b98_z.jpg' }
     block5Text1: { type: text, title: 'Block 5 Text 1', default: 'This is content for block 5.' }
     block5Text2: { type: text, title: 'Block 5 Text 2', default: 'Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.' }
+    block5Link: { type: text, title: 'Block 5 Link', default: '#' }
     # Social
     socialFacebookUrl: { type: text, title: 'Facebook URL', default: '' }
     socialTwitterUrl: { type: text, title: 'Twitter URL', default: '' }
