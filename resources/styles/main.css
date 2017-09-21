@@ -6909,7 +6909,10 @@ Hero Images
 .hero__content a:hover h1 {
     color: white;
 }
-.hero__content a:hover{
+.hero__content a:hover {
+    color: white;
+}
+.hero__content a:active {
     color: white;
 }
 .hero__content {
