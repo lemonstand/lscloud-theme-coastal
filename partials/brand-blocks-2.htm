@@ -1,24 +1,30 @@
 <div class="row mkt">
     <div class="col-sm-6 mkt__block mkt__block--overlay">
         <a href="#">
-            <figure class="mkt__img">
-                <img alt="" src="https://farm3.staticflickr.com/2693/4193135790_dc0d20fb69_b.jpg" />
-            </figure>
-            <div class="mkt__content text-center">
-                <h3 class="text-white">This is content for this block.</h3>
-                <p class="text-white text-caps">Shop this Feature</p>
+            <div class="mkt__content text-center block" style="background-image: url(
+                {{ theme.block1Image.thumbnail('auto', 'auto') }}
+            );">
+                <h3 class="text-white">
+                    {{ theme.block1Text1 }}
+                </h3>
+                <p class="text-white text-caps">
+                    {{ theme.block1Text2 }}
+                </p>
             </div>
         </a>
     </div>
 
     <div class="col-sm-6 mkt__block mkt__block--overlay">
         <a href="#">
-            <figure class="mkt__img">
-                <img src="https://farm1.staticflickr.com/19/106619526_630018976b_z.jpg" />
-            </figure>
-            <div class="mkt__content text-center">
-                <h3 class="text-white">This is content for this block.</h3>
-                <p class="text-white text-caps">Shop this Feature</p>
+            <div class="mkt__content text-center block" style="background-image: url(
+                {{ theme.block2Image.thumbnail('auto', 'auto') }}
+            );">
+                <h3 class="text-white">
+                    {{ theme.block2Text1 }}
+                </h3>
+                <p class="text-white text-caps">
+                    {{ theme.block2Text2 }}
+                </p>
             </div>
         </a>
     </div>
