@@ -1,37 +1,46 @@
 <div class="row mkt">
-    <div class="col-sm-4 mkt__block">
+    <div class="col-sm-4 mkt__block mkt__block--overlay">
         <a href="#">
-            <figure class="mkt__img">
-                <img src="https://farm5.staticflickr.com/4051/4297705996_ba97ba018f_z.jpg" />
-            </figure>
-            <div class="text-center mkt__content">
-                <h4>This is content for this block.</h4>
-                <p class="text-muted">Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.</p>
+            <div class="text-center mkt__content block" style="background-image: url(
+                {{ theme.block3Image.thumbnail('auto', 'auto') }}
+            );">
             </div>
+            <h4>
+                {{ theme.block3Text1 }}
+            </h4>
+            <p class="text-muted">
+                {{ theme.block3Text2 }}
+            </p>
         </a>
     </div>
 
-    <div class="col-sm-4 mkt__block">
+    <div class="col-sm-4 mkt__block mkt__block--overlay">
         <a href="#">
-            <figure class="mkt__img">
-                <img src="https://farm8.staticflickr.com/7013/6527816421_55977c2f6f_z.jpg" />
-            </figure>
-            <div class="text-center mkt__content">
-                <h4>This is content for this block.</h4>
-                <p class="text-muted">Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.</p>
+            <div class="text-center mkt__content block" style="background-image: url(
+                {{ theme.block4Image.thumbnail('auto', 'auto') }}
+            );">
             </div>
+            <h4>
+                {{ theme.block4Text1 }}
+            </h4>
+            <p class="text-muted">
+                {{ theme.block4Text2 }}
+            </p>
         </a>
     </div>
 
-    <div class="col-sm-4 mkt__block">
+    <div class="col-sm-4 mkt__block mkt__block--overlay">
         <a href="#">
-            <figure class="mkt__img">
-                <img src="https://farm3.staticflickr.com/2795/4248042200_04699a4b98_z.jpg" />
-            </figure>
-            <div class="text-center mkt__content">
-                <h4>This is content for this block.</h4>
-                <p class="text-muted">Ac posuere sagittis aenean justo curabitur condimentum platea a praesent per.</p>
+            <div class="text-center mkt__content block" style="background-image: url(
+                {{ theme.block5Image.thumbnail('auto', 'auto') }}
+            );">
             </div>
+            <h4>
+                {{ theme.block5Text1 }}
+            </h4>
+            <p class="text-muted">
+                {{ theme.block5Text2 }}
+            </p>
         </a>
     </div>
 </div>
