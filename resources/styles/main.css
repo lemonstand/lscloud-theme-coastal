@@ -6906,6 +6906,15 @@ Hero Images
     position: relative;
     overflow: hidden;
 }
+.hero__content a:hover h1 {
+    color: white;
+}
+.hero__content a:hover {
+    color: white;
+}
+.hero__content a:active {
+    color: white;
+}
 .hero__content {
     padding-top: 17.5%;
     padding-bottom: 17.5%;
@@ -6965,6 +6974,9 @@ Marketing
 .mkt__block a:hover {
     text-decoration: none;
 }
+.mkt__blocks-3 a:hover {
+    text-decoration: underline;
+}
 .mkt__block--overlay a {
     position: relative;
     overflow: hidden;
@@ -6993,11 +7005,18 @@ Marketing
     height: 100%;
     width: 100%;
 }
-.mkt__block--overlay a:hover .mkt__content {
-    background-color: rgba(0, 0, 0, 0.33);
+.mkt__content:hover {
+    -webkit-filter: brightness(70%);
+    -moz-filter: brightness(70%);
+    -o-filter: brightness(70%);
+    -ms-filter: brightness(70%);
+    filter: brightness(70%);
 }
 .mkt__content {
     padding-top: .5em;
+}
+.block {
+    background-size: cover;
 }
 .mkt__content p.text-caps {
     color: rgba(255, 255, 255, 0.85);

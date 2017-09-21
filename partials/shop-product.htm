@@ -79,7 +79,7 @@
                 <hr />
                 <div class="form-group">
                   <label class="title" for="customDropdown">Quantity</label>
-                  <input type="text" size="1" value="{{ quantity|default(" 1 ") }}" name="quantity" class="form-control input-sm" />
+                  <input type="text" size="1" value="{{ quantity|default(1) }}" name="quantity" class="form-control input-sm" />
                 </div>
 
                 <div class="stock-level">{{ product.in_stock_amount }} available</div>
